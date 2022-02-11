@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Meu Beats</string>
     <string name="background_description">Background of LoginActivity</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="login">Entrar</string>
 </resources>

@@ -6,21 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".main.MainActivity">
 
-
-    <ImageView
+    <include layout="@layout/content_main"
+        android:id="@+id/included"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/backgroun_login_photo"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_login"/>
-
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
