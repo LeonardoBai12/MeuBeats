@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Meu Beats</string>
+    <string name="background_description">Background of LoginActivity</string>
 </resources>
