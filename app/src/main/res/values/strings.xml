@@ -6,4 +6,7 @@
     <string name="password">Senha</string>
     <string name="login">Entrar</string>
     <string name="subscribe">Ainda não cadastrado? <a href="https://www.google.com.br">Inscreva-se!</a></string>
+    <string name="default_headset">Default headset</string>
+    <string name="add">Adicionar</string>
+    <string name="question_mark">\?</string>
 </resources>
