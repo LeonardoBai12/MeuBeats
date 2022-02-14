@@ -47,6 +47,7 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
 
 
     private fun setupActionBar() {
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_arrow)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
