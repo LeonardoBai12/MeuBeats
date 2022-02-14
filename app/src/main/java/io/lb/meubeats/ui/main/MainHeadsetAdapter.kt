@@ -82,7 +82,7 @@ class MainHeadsetAdapter : RecyclerView.Adapter<MainHeadsetAdapter.ViewHolder>()
         fun bind(headset: Headset) {
             tvHeadsetName.text = headset.name
             tvHeadsetScore.text = headset.averageScore.toString()
-            tvHeadsetReviews.text = headset.reviews.toString()
+            tvHeadsetReviews.text = headset.reviews.toString().plus(" reviews")
             tvHeadsetPrice.text = DoubleHelper.formatCurrency(headset.price)
         }
     }
