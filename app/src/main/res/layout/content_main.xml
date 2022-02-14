@@ -9,7 +9,6 @@
         android:id="@+id/iv_headset"
         android:layout_width="220dp"
         android:layout_height="180dp"
-        android:layout_marginTop="25dp"
         android:src="@drawable/img_default_headset"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +16,7 @@
         android:contentDescription="@string/default_headset" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_add_heaadset"
+        android:id="@+id/bt_add_headset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
@@ -40,7 +39,7 @@
         android:textColor="@color/white"
         android:text="@string/question_mark"
         android:background="@drawable/background_button_normal"
-        app:layout_constraintTop_toTopOf="@+id/bt_add_heaadset"
-        app:layout_constraintStart_toEndOf="@+id/bt_add_heaadset"/>
+        app:layout_constraintTop_toTopOf="@+id/bt_add_headset"
+        app:layout_constraintStart_toEndOf="@+id/bt_add_headset"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
