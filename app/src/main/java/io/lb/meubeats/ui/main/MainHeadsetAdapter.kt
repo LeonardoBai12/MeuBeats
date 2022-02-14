@@ -5,14 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.lb.meubeats.R
 import io.lb.meubeats.model.headset.Headset
+import io.lb.meubeats.ui.headset.HeadsetViewModel
 import io.lb.meubeats.utils.DoubleHelper
 
 class MainHeadsetAdapter : RecyclerView.Adapter<MainHeadsetAdapter.ViewHolder>() {
     private var headsets = arrayListOf<Headset>()
     private var headsetsFull = arrayListOf<Headset>()
+    lateinit var viewModel: HeadsetViewModel
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -20,11 +24,30 @@ class MainHeadsetAdapter : RecyclerView.Adapter<MainHeadsetAdapter.ViewHolder>()
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_headset, parent, false)
+        viewModel = ViewModelProvider(parent.context as AppCompatActivity)[HeadsetViewModel::class.java]
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(headsets[position])
+
+        if (viewModel.selectedPosition == position) {
+            changeBackgrounColor(holder.itemView, R.color.primary_dark)
+        } else {
+            changeBackgrounColor(holder.itemView, R.color.dark_gray)
+        }
+
+        holder.itemView.setOnClickListener {
+            viewModel.selectedHeadset.value = headsets[position]
+            viewModel.selectedPosition = position
+            notifyDataSetChanged()
+        }
+    }
+
+    private fun changeBackgrounColor(itemView: View, id: Int) {
+        itemView.setBackgroundColor(
+            itemView.context.getColor(id)
+        )
     }
 
     override fun getItemCount(): Int {

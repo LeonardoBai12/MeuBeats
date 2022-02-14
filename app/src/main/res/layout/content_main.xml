@@ -19,12 +19,13 @@
         android:id="@+id/bt_add_headset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
+        android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="25dp"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:text="@string/add"
+        android:text="@string/select_a_product"
         android:background="@drawable/background_button_normal"
+        android:enabled="false"
         app:layout_constraintTop_toBottomOf="@+id/iv_headset"
         app:layout_constraintStart_toStartOf="@+id/iv_headset"
         app:layout_constraintEnd_toEndOf="@+id/iv_headset"
@@ -39,6 +40,7 @@
         android:textColor="@color/white"
         android:text="@string/question_mark"
         android:background="@drawable/background_button_normal"
+        android:enabled="false"
         app:layout_constraintTop_toTopOf="@+id/bt_add_headset"
         app:layout_constraintStart_toEndOf="@+id/bt_add_headset"/>
 

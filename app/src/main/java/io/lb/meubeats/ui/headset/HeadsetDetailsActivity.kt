@@ -2,13 +2,14 @@ package io.lb.meubeats.ui.headset
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityHeadsetDetailsBinding
 import io.lb.meubeats.model.headset.Headset
+import io.lb.meubeats.utils.GeneralConstants
 
-class HeadsetDetailsActivity : AppCompatActivity() {
+class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityHeadsetDetailsBinding
     private var headset: Headset? = null
 
@@ -23,7 +24,7 @@ class HeadsetDetailsActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        headset = intent.getSerializableExtra("HEADSET") as Headset?
+        headset = intent.getSerializableExtra(GeneralConstants.HEADSET) as Headset?
 
         headset?.let {
             binding.included.tvTitle.text = it.name

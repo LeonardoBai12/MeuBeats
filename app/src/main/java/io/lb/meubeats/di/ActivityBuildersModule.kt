@@ -25,11 +25,6 @@ abstract class ActivityBuildersModule {
     )
     abstract fun contributeMainActivity(): MainActivity
 
-    @ContributesAndroidInjector(
-        modules = [
-            HeadsetModule::class,
-            HeadsetViewModelModule::class,
-        ]
-    )
+    @ContributesAndroidInjector
     abstract fun contributeHeadsetActivity(): HeadsetDetailsActivity
 }

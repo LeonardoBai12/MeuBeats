@@ -2,13 +2,11 @@ package io.lb.meubeats.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import io.lb.meubeats.R
+import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.databinding.ActivityLoginBinding
 import io.lb.meubeats.ui.main.MainActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

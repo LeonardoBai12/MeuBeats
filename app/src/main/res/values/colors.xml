@@ -6,8 +6,10 @@
     <color name="secondary">#FF0ACF83</color>
     <color name="secondary_light">#FF70EFDE</color>
     <color name="dark_gray">#FF121212</color>
+    <color name="disabled_button_gray">#FF727272</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_gray">#FFEDEDED</color>
     <color name="shimmer_grey">#FF3B3B3B</color>
+    <color name="yellow">#FFFFC120</color>
 </resources>
