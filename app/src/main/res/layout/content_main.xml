@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_faq"
+        android:id="@+id/bt_headset_details"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"

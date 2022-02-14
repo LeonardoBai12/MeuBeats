@@ -19,7 +19,7 @@ object ResourceCreator {
         return Headset(
             "Fone Modelo $model",
             soundCapture = "Semi ativa",
-            electricalSupply = "Bateria",
+            powerSupply = "Bateria",
             compatibility = "Bluetooth 4.1",
             connection = "Bluetooth",
             height = 16.8,
