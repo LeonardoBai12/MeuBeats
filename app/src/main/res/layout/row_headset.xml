@@ -61,13 +61,13 @@
         android:id="@+id/tv_headset_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="24dp"
         android:text="R$ 20,50"
-        android:textStyle="bold"
+        android:textColor="@color/yellow"
         android:textSize="18sp"
-        android:textColor="@color/primary"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

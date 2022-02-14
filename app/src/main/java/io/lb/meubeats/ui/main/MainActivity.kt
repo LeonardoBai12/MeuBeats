@@ -2,27 +2,37 @@ package io.lb.meubeats.ui.main
 
 import android.app.SearchManager
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityMainBinding
 import io.lb.meubeats.model.headset.Headset
 import io.lb.meubeats.ui.headset.HeadsetDetailsActivity
+import io.lb.meubeats.ui.headset.HeadsetViewModel
+import io.lb.meubeats.utils.GeneralConstants
 import io.lb.meubeats.utils.ResourceCreator
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val headsetAdapter = MainHeadsetAdapter()
-    private val headsets = ResourceCreator.exampleHeadsets()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: HeadsetViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +44,21 @@ class MainActivity : AppCompatActivity() {
         setupActionBar()
         setupDetailsButtonListener()
         setupAddButtonListener()
+        setupViewModel()
+    }
 
-        updateHeadsets(headsets)
+    private fun setupViewModel() {
+        viewModel.loadHeadsets().observe(this) {
+            updateHeadsets(it)
+        }
+
+        viewModel.selectedHeadset.observe(this) {
+            binding.included.btHeadsetDetails.isEnabled = true
+            binding.included.btAddHeadset.apply {
+                text = getString(R.string.add)
+                isEnabled = true
+            }
+        }
     }
 
     private fun setupAddButtonListener() {
@@ -53,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this, HeadsetDetailsActivity::class.java)
             val bundle = Bundle()
 
-            bundle.putSerializable("HEADSET", headsets[0])
+            bundle.putSerializable(GeneralConstants.HEADSET, viewModel.selectedHeadset.value)
             i.putExtras(bundle)
 
             startActivity(i)
