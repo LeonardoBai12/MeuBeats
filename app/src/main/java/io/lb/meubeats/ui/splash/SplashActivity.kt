@@ -1,10 +1,10 @@
-package io.lb.meubeats.splash
+package io.lb.meubeats.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import io.lb.meubeats.databinding.ActivitySplashBinding
-import io.lb.meubeats.login.LoginActivity
+import io.lb.meubeats.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding

@@ -1,16 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.MeuBeats" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorAccent">@color/primary_light</item>
+        <item name="colorAccent">@color/primary</item>
         <item name="colorOnSurface">@color/light_gray</item>
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_light</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/black</item>
+        <item name="android:textColorLink">@color/secondary</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
     <style name="Theme.MeuBeat.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorAccent">@color/primary</item>
+        <item name="colorOnSurface">@color/light_gray</item>
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_light</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/black</item>
+        <item name="android:textColorLink">@color/secondary</item>
     </style>
 
     <style name="LaunchTheme" parent="Theme.MeuBeats">

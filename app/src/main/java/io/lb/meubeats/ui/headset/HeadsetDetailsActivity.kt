@@ -1,4 +1,4 @@
-package io.lb.meubeats.headset
+package io.lb.meubeats.ui.headset
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

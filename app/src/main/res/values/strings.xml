@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Meu Beats</string>
+    <string name="app_speciality">Especializados em fones para deejay</string>
     <string name="background_description">Background of LoginActivity</string>
     <string name="user">Usuário</string>
     <string name="password">Senha</string>
     <string name="login">Entrar</string>
+    <string name="subscribe">Ainda não cadastrado? <a href="https://www.google.com.br">Inscreva-se!</a></string>
 </resources>

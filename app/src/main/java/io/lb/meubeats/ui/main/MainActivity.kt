@@ -1,4 +1,4 @@
-package io.lb.meubeats.main
+package io.lb.meubeats.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
