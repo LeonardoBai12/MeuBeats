@@ -2,6 +2,7 @@ package io.lb.meubeats.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -28,7 +29,13 @@ class LoginActivity : DaggerAppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupSubscribeHyperlink()
         setupOnLoginClick()
+
+    }
+
+    private fun setupSubscribeHyperlink() {
+        binding.included.tvSubscribe.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun setupOnLoginClick() {
