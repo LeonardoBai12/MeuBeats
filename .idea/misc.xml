@@ -16,10 +16,12 @@
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/activity_headset_details.xml" value="0.22" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/activity_not_connected.xml" value="0.5" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/activity_splash.xml" value="0.358695652173913" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/content_headset_details.xml" value="0.358695652173913" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/content_login.xml" value="0.35834609494640124" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/content_main.xml" value="0.358695652173913" />
+        <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/content_not_connected.xml" value="0.33" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/iv_headset.xml" value="0.22" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/main_background.xml" value="0.358695652173913" />
         <entry key="..\:/LB/MeuBeats/app/src/main/res/layout/row_headset.xml" value="0.33" />

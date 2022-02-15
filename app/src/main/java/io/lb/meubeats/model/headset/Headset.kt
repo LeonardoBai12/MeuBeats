@@ -3,7 +3,7 @@ package io.lb.meubeats.model.headset
 import java.io.Serializable
 
 data class Headset(
-    val name: String,
+    val name: String = "",
     var soundCapture: String? = null,
     var powerSupply: String? = null,
     var compatibility: String? = null,

@@ -20,12 +20,13 @@ import io.lb.meubeats.model.headset.Headset
 import io.lb.meubeats.ui.headset.HeadsetDetailsActivity
 import io.lb.meubeats.ui.headset.HeadsetViewModel
 import io.lb.meubeats.utils.GeneralConstants
-import io.lb.meubeats.utils.ResourceCreator
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val headsetAdapter = MainHeadsetAdapter()
+    private var id = 0
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -48,8 +49,12 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.loadHeadsets().observe(this) {
+        viewModel.loadHeadsetsFromApi().observe(this) {
             updateHeadsets(it)
+        }
+
+        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
+            id = headsets.size
         }
 
         viewModel.selectedHeadset.observe(this) {
@@ -63,12 +68,25 @@ class MainActivity : DaggerAppCompatActivity() {
 
     private fun setupAddButtonListener() {
         binding.included.btAddHeadset.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Produto adicionado com sucesso!",
-                Toast.LENGTH_LONG
-            ).show()
+            val headset = viewModel.selectedHeadset.value ?: return@setOnClickListener
+            viewModel.loadHeadsetsFromFirebase()
+
+            viewModel.insertHeadset(id, headset) { isSuccessful, exception ->
+                if (isSuccessful) {
+                    toaskHeadsetAddSuccess()
+                } else {
+                    Timber.e(exception)
+                }
+            }
         }
+    }
+
+    private fun toaskHeadsetAddSuccess() {
+        Toast.makeText(
+            this,
+            "Produto adicionado com sucesso!",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
     private fun setupDetailsButtonListener() {
