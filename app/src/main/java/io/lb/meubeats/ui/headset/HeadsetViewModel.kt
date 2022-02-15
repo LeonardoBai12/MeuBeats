@@ -3,6 +3,7 @@ package io.lb.meubeats.ui.headset
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import io.lb.meubeats.model.headset.Headset
 import io.lb.meubeats.network.headset.HeadsetRepository
@@ -16,7 +17,7 @@ class HeadsetViewModel @Inject constructor(
     var headsets = MutableLiveData<ArrayList<Headset>>()
     var selectedPosition: Int? = null
 
-    fun loadHeadsets(): MutableLiveData<ArrayList<Headset>> {
+    fun loadHeadsetsFromApi(): MutableLiveData<ArrayList<Headset>> {
         headsets.value = ResourceCreator.exampleHeadsets()
         return headsets
     }
@@ -29,7 +30,13 @@ class HeadsetViewModel @Inject constructor(
         return repository.insertHeadset(id, headset, onCompleted)
     }
 
-    fun loadHeadsetsListener(onDataChanged: (ArrayList<Headset>) -> Unit): ValueEventListener {
+    fun loadHeadsetsFromFirebase(): Task<DataSnapshot> {
+        return repository.loadHeadsets()
+    }
+
+    fun loadHeadsetsFromFirebaseListener(
+        onDataChanged: (ArrayList<Headset>) -> Unit
+    ): ValueEventListener {
         return repository.loadHeadsetsListener(onDataChanged)
     }
 }

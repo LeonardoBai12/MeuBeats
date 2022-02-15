@@ -74,7 +74,7 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.loadHeadsetsListener { headsets ->
+        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
             id = headsets.size
         }
     }
