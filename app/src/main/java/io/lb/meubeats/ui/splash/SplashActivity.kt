@@ -2,8 +2,8 @@ package io.lb.meubeats.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.databinding.ActivitySplashBinding
 import io.lb.meubeats.ui.login.LoginActivity
 import io.lb.meubeats.ui.main.MainActivity
@@ -11,7 +11,7 @@ import io.lb.meubeats.ui.not_connected.NotConnectedActivity
 import io.lb.meubeats.utils.NetworkHelper
 import javax.inject.Inject
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
 
     @Inject

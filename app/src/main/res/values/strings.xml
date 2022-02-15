@@ -19,4 +19,6 @@
     <string name="select_a_product">Selecione um produto</string>
     <string name="not_connected">Houve uma falha na conexão =(</string>
     <string name="try_again">Tentar novamente</string>
+    <string name="login_empty_fields">Existem campos não preenchidos</string>
+    <string name="login_error">Erro na autenticação</string>
 </resources>
