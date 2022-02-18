@@ -1,4 +1,4 @@
-package io.lb.meubeats.di.user
+package io.lb.meubeats.user_feature.di
 
 import androidx.lifecycle.ViewModel
 import dagger.Binds

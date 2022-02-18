@@ -4,13 +4,13 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import io.lb.meubeats.di.headset.HeadsetModule
 import io.lb.meubeats.di.headset.HeadsetViewModelModule
-import io.lb.meubeats.di.user.UserModule
-import io.lb.meubeats.di.user.UserViewModelModule
-import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsActivity
-import io.lb.meubeats.headset_feature.presentation.login.LoginActivity
-import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
-import io.lb.meubeats.presentation.NotConnectedActivity
+import io.lb.meubeats.headset_feature.presentation.headset.HeadsetActivity
+import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsActivity
+import io.lb.meubeats.user_feature.di.UserModule
+import io.lb.meubeats.user_feature.di.UserViewModelModule
+import io.lb.meubeats.not_connected_feature.presentation.NotConnectedActivity
 import io.lb.meubeats.splash_feature.presentation.SplashActivity
+import io.lb.meubeats.user_feature.presentation.login.LoginActivity
 
 @Module
 abstract class ActivityBuildersModule {

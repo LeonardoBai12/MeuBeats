@@ -5,11 +5,22 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.textfield.TextInputEditText
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityLoginBinding
-import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
+import io.lb.meubeats.headset_feature.presentation.headset.HeadsetActivity
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class LoginActivity : DaggerAppCompatActivity() {
@@ -29,8 +40,54 @@ class LoginActivity : DaggerAppCompatActivity() {
         setContentView(binding.root)
 
         setupSubscribeHyperlink()
-        setupOnLoginClick()
 
+        setupUiEvents()
+        setupOnEmailEntered()
+        setupOnPasswordEntered()
+        setupOnLoginClick()
+    }
+
+    private fun setupUiEvents() {
+        CoroutineScope(Main).launch {
+            viewModel.eventFlow.collectLatest { event ->
+                when (event) {
+                    is LoginViewModel.UiEvent.ShowToast -> {
+                        toastMakeText(event.message)
+                    }
+                    is LoginViewModel.UiEvent.Login -> {
+                        onSignInSuccess()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupOnEmailEntered() {
+        Observable.create<String> { emitter ->
+            binding.included.tvLoginEmail.editText?.addTextChangedListener {
+                if (!emitter.isDisposed) {
+                    emitter.onNext(it.toString())
+                }
+            }
+        }.debounce(500, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()).subscribe { email ->
+                viewModel.onEvent(LoginEvent.EnteredEmail(email))
+            }
+    }
+
+    private fun setupOnPasswordEntered() {
+        Observable.create<String> { emitter ->
+            binding.included.tvLoginPassword.editText?.addTextChangedListener {
+                if (!emitter.isDisposed) {
+                    emitter.onNext(it.toString())
+                }
+            }
+        }.debounce(500, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()).subscribe { password ->
+                viewModel.onEvent(LoginEvent.EnteredPassword(password))
+            }
     }
 
     private fun setupSubscribeHyperlink() {
@@ -39,25 +96,7 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun setupOnLoginClick() {
         binding.included.btLogin.setOnClickListener {
-            val email = binding.included.tvLoginEmail.editText?.text.toString()
-            val password = binding.included.tvLoginPassword.editText?.text.toString()
-
-            if (email.isEmpty() || password.isEmpty()) {
-                toastMakeText(getString(R.string.login_empty_fields))
-                return@setOnClickListener
-            }
-
-            viewModel.loginFirebaseUser(
-                this,
-                email,
-                password,
-            ) { task ->
-                if (task.isSuccessful) {
-                    onSignInSuccess()
-                } else {
-                    onSignInFailure(task.exception)
-                }
-            }
+            viewModel.onEvent(LoginEvent.PressedLogin)
         }
     }
 
@@ -65,10 +104,6 @@ class LoginActivity : DaggerAppCompatActivity() {
         val i = Intent(this, HeadsetActivity::class.java)
         startActivity(i)
         finishAffinity()
-    }
-
-    private fun onSignInFailure(task: Exception?) {
-        toastMakeText("${getString(R.string.login_error)}: $task")
     }
 
     private fun toastMakeText(text: String) {

@@ -5,9 +5,9 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.databinding.ActivitySplashBinding
-import io.lb.meubeats.headset_feature.presentation.login.LoginActivity
+import io.lb.meubeats.headset_feature.presentation.headset.HeadsetActivity
 import io.lb.meubeats.not_connected_feature.presentation.NotConnectedActivity
-import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
+import io.lb.meubeats.user_feature.presentation.login.LoginActivity
 import io.lb.meubeats.utils.NetworkHelper
 import javax.inject.Inject
 
