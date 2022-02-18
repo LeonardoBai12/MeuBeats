@@ -1,4 +1,4 @@
-package io.lb.meubeats.user_feature.presentation.headset
+package io.lb.meubeats.headset_feature.presentation.headset
 
 import android.app.SearchManager
 import android.content.Intent
@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityMainBinding
-import io.lb.meubeats.user_feature.domain.model.Headset
-import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsActivity
-import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetViewModel
+import io.lb.meubeats.headset_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsActivity
+import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetViewModel
 import io.lb.meubeats.utils.GeneralConstants
 import timber.log.Timber
 import javax.inject.Inject

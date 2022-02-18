@@ -5,12 +5,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.lb.meubeats.di.ViewModelKey
-import io.lb.meubeats.headset_feature.presentation.login.UserViewModel
+import io.lb.meubeats.user_feature.presentation.login.LoginViewModel
 
 @Module
 abstract class UserViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(UserViewModel::class)
-    abstract fun bindUserViewModel(viewModel: UserViewModel) : ViewModel
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindUserViewModel(viewModel: LoginViewModel) : ViewModel
 }

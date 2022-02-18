@@ -1,4 +1,4 @@
-package io.lb.meubeats.headset_feature.presentation.login
+package io.lb.meubeats.user_feature.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -18,7 +18,7 @@ class LoginActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: UserViewModel by viewModels {
+    private val viewModel: LoginViewModel by viewModels {
         viewModelFactory
     }
 

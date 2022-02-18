@@ -1,23 +1,22 @@
-package io.lb.meubeats.user_feature.domain.repository
+package io.lb.meubeats.user_feature.presentation.login
 
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
+import io.lb.meubeats.user_feature.domain.repository.UserRepositoryImpl
+import javax.inject.Inject
 
-class UserRepository(
-    private val auth: FirebaseAuth,
-) {
+class LoginViewModel @Inject constructor(
+    private val repository: UserRepositoryImpl
+) : ViewModel() {
     fun createFirebaseUser(
         context: AppCompatActivity,
         email: String,
         password: String,
         onCompleted: (Task<AuthResult>) -> Unit
     ): Task<AuthResult> {
-        return auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(context) {
-                onCompleted(it)
-            }
+        return repository.createFirebaseUser(context, email, password, onCompleted)
     }
 
     fun loginFirebaseUser(
@@ -26,9 +25,6 @@ class UserRepository(
         password: String,
         onCompleted: (Task<AuthResult>) -> Unit
     ): Task<AuthResult> {
-        return auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(context) {
-                onCompleted(it)
-            }
+        return repository.loginFirebaseUser(context, email, password, onCompleted)
     }
 }

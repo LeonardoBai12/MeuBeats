@@ -7,7 +7,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import io.lb.meubeats.user_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.domain.model.Headset
 
 class HeadsetRepository(
     private val database: FirebaseDatabase,
