@@ -10,7 +10,7 @@ import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsAc
 import io.lb.meubeats.headset_feature.presentation.login.LoginActivity
 import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
 import io.lb.meubeats.presentation.NotConnectedActivity
-import io.lb.meubeats.headset_feature.presentation.splash.SplashActivity
+import io.lb.meubeats.splash_feature.presentation.SplashActivity
 
 @Module
 abstract class ActivityBuildersModule {

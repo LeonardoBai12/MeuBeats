@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeuBeats">
         <activity
-            android:name="io.lb.meubeats.headset_feature.presentation.splash.SplashActivity"
+            android:name="io.lb.meubeats.splash_feature.presentation.SplashActivity"
             android:exported="true"
             android:theme="@style/LaunchTheme">
             <intent-filter>
