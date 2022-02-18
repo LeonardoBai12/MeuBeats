@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.lb.meubeats.R
 import io.lb.meubeats.headset_feature.domain.model.Headset
-import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetViewModel
 import io.lb.meubeats.utils.DoubleHelper
 
 class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {

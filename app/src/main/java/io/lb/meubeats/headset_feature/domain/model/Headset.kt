@@ -14,3 +14,5 @@ data class Headset(
     var price: Double? = null,
     var reviews: Int? = null,
 ) : Serializable
+
+class InvalidHeadsetException(message: String) : Exception(message)

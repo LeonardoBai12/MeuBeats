@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
-import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
+import io.lb.meubeats.headset_feature.data.repository.HeadsetRepositoryImpl
 
 @Module
 class HeadsetModule {
@@ -12,8 +12,8 @@ class HeadsetModule {
     fun providesHeadsetsRepository(
         database: FirebaseDatabase,
         auth: FirebaseAuth
-    ): HeadsetRepository {
-        return HeadsetRepository(database, auth)
+    ): HeadsetRepositoryImpl {
+        return HeadsetRepositoryImpl(database, auth)
     }
 
 }
