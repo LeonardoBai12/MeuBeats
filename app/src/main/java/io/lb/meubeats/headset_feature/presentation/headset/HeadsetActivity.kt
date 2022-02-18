@@ -19,7 +19,6 @@ import io.lb.meubeats.databinding.ActivityMainBinding
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsActivity
 import io.lb.meubeats.utils.GeneralConstants
-import timber.log.Timber
 import javax.inject.Inject
 
 class HeadsetActivity : DaggerAppCompatActivity() {
@@ -48,11 +47,11 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.loadHeadsetsFromApi().observe(this) {
+        viewModel.getHeadsets().observe(this) {
             updateHeadsets(it)
         }
 
-        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
+        viewModel.getHeadsetsFromFirebase { headsets ->
             id = headsets.size
         }
 
@@ -68,14 +67,9 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     private fun setupAddButtonListener() {
         binding.included.btAddHeadset.setOnClickListener {
             val headset = viewModel.selectedHeadset.value ?: return@setOnClickListener
-            viewModel.loadHeadsetsFromFirebase()
 
-            viewModel.insertHeadset(id, headset) { isSuccessful, exception ->
-                if (isSuccessful) {
-                    toaskHeadsetAddSuccess()
-                } else {
-                    Timber.e(exception)
-                }
+            viewModel.insertHeadset(id, headset) {
+
             }
         }
     }

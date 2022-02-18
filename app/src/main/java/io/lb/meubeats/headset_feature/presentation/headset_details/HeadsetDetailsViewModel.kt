@@ -1,4 +1,31 @@
 package io.lb.meubeats.headset_feature.presentation.headset_details
 
-class HeadsetDetailsViewModel {
+import androidx.lifecycle.ViewModel
+import io.lb.meubeats.headset_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
+import io.lb.meubeats.user_feature.presentation.login.LoginViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import javax.inject.Inject
+
+class HeadsetDetailsViewModel @Inject constructor(
+    private val useCases: HeadsetUseCases
+): ViewModel() {
+
+    private val _eventFlow = MutableSharedFlow<LoginViewModel.UiEvent>()
+    val eventFlow = _eventFlow.asSharedFlow()
+
+    sealed class UiEvent {
+        data class ShowToast(val message: String): UiEvent()
+        object InsertHeadset: UiEvent()
+    }
+
+    fun insertHeadset(id: Int, headset: Headset, onCompleted: () -> Unit) {
+
+    }
+
+    fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {
+
+    }
+
 }

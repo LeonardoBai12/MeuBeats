@@ -1,4 +1,4 @@
-package io.lb.meubeats.di.headset
+package io.lb.meubeats.headset_feature.di
 
 import androidx.lifecycle.ViewModel
 import dagger.Binds

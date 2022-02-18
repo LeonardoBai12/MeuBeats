@@ -12,7 +12,6 @@ import io.lb.meubeats.databinding.ActivityHeadsetDetailsBinding
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.presentation.headset.HeadsetViewModel
 import io.lb.meubeats.utils.GeneralConstants
-import timber.log.Timber
 import javax.inject.Inject
 
 class HeadsetDetailsActivity : DaggerAppCompatActivity() {
@@ -45,13 +44,13 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.insertHeadset(id, headset!!) { isSuccessful, exception ->
-                if (isSuccessful) {
-                    finish()
-                } else {
-                    Timber.e(exception)
-                    toastMakeText("Falha ao salvar produto. $exception")
-                }
+            viewModel.insertHeadset(id, headset!!) {
+//                if (isSuccessful) {
+//                    finish()
+//                } else {
+//                    Timber.e(exception)
+//                    toastMakeText("Falha ao salvar produto. $exception")
+//                }
             }
         }
     }
@@ -75,9 +74,9 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
-            id = headsets.size
-        }
+//        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
+//            id = headsets.size
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
