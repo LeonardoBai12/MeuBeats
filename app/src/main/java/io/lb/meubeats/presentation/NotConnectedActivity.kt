@@ -1,10 +1,10 @@
-package io.lb.meubeats.ui.not_connected
+package io.lb.meubeats.presentation
 
 import android.content.Intent
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.databinding.ActivityNotConnectedBinding
-import io.lb.meubeats.ui.splash.SplashActivity
+import io.lb.meubeats.headset_feature.presentation.splash.SplashActivity
 
 class NotConnectedActivity: DaggerAppCompatActivity() {
     private lateinit var binding: ActivityNotConnectedBinding

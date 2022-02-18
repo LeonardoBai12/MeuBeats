@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeuBeats">
         <activity
-            android:name="io.lb.meubeats.ui.splash.SplashActivity"
+            android:name="io.lb.meubeats.headset_feature.presentation.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/LaunchTheme">
             <intent-filter>
@@ -23,21 +23,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.lb.meubeats.ui.main.MainActivity"
+            android:name="io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name="io.lb.meubeats.ui.not_connected.NotConnectedActivity"
+            android:name="io.lb.meubeats.presentation.NotConnectedActivity"
             android:exported="true"
             android:theme="@style/Theme.MeuBeat.NoActionBar">
         </activity>
         <activity
-            android:name="io.lb.meubeats.ui.login.LoginActivity"
+            android:name="io.lb.meubeats.headset_feature.presentation.login.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.MeuBeat.NoActionBar">
         </activity>
         <activity
-            android:name="io.lb.meubeats.ui.headset.HeadsetDetailsActivity"
+            android:name="io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsActivity"
             android:exported="true">
         </activity>
     </application>

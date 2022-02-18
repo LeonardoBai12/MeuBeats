@@ -6,11 +6,11 @@ import io.lb.meubeats.di.headset.HeadsetModule
 import io.lb.meubeats.di.headset.HeadsetViewModelModule
 import io.lb.meubeats.di.user.UserModule
 import io.lb.meubeats.di.user.UserViewModelModule
-import io.lb.meubeats.ui.headset.HeadsetDetailsActivity
-import io.lb.meubeats.ui.login.LoginActivity
-import io.lb.meubeats.ui.main.MainActivity
-import io.lb.meubeats.ui.not_connected.NotConnectedActivity
-import io.lb.meubeats.ui.splash.SplashActivity
+import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsActivity
+import io.lb.meubeats.headset_feature.presentation.login.LoginActivity
+import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
+import io.lb.meubeats.presentation.NotConnectedActivity
+import io.lb.meubeats.headset_feature.presentation.splash.SplashActivity
 
 @Module
 abstract class ActivityBuildersModule {
@@ -34,7 +34,7 @@ abstract class ActivityBuildersModule {
             HeadsetViewModelModule::class,
         ]
     )
-    abstract fun contributeMainActivity(): MainActivity
+    abstract fun contributeMainActivity(): HeadsetActivity
 
     @ContributesAndroidInjector(
         modules = [

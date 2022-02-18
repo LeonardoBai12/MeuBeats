@@ -1,4 +1,4 @@
-package io.lb.meubeats.ui.main
+package io.lb.meubeats.user_feature.presentation.headset
 
 import android.app.SearchManager
 import android.content.Intent
@@ -16,16 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityMainBinding
-import io.lb.meubeats.model.headset.Headset
-import io.lb.meubeats.ui.headset.HeadsetDetailsActivity
-import io.lb.meubeats.ui.headset.HeadsetViewModel
+import io.lb.meubeats.user_feature.domain.model.Headset
+import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetDetailsActivity
+import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetViewModel
 import io.lb.meubeats.utils.GeneralConstants
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() {
+class HeadsetActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val headsetAdapter = MainHeadsetAdapter()
+    private val headsetAdapter = HeadsetAdapter()
     private var id = 0
 
     @Inject

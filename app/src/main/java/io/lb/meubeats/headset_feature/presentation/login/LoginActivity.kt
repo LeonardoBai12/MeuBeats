@@ -1,4 +1,4 @@
-package io.lb.meubeats.ui.login
+package io.lb.meubeats.headset_feature.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityLoginBinding
-import io.lb.meubeats.ui.main.MainActivity
-import io.lb.meubeats.ui.user.UserViewModel
+import io.lb.meubeats.user_feature.presentation.headset.HeadsetActivity
 import javax.inject.Inject
 
 class LoginActivity : DaggerAppCompatActivity() {
@@ -63,7 +62,7 @@ class LoginActivity : DaggerAppCompatActivity() {
     }
 
     private fun onSignInSuccess() {
-        val i = Intent(this, MainActivity::class.java)
+        val i = Intent(this, HeadsetActivity::class.java)
         startActivity(i)
         finishAffinity()
     }

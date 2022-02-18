@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.lb.meubeats.di.ViewModelKey
-import io.lb.meubeats.ui.headset.HeadsetViewModel
+import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetViewModel
 
 @Module
 abstract class HeadsetViewModelModule {

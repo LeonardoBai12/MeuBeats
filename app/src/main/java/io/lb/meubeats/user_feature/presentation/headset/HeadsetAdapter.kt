@@ -1,4 +1,4 @@
-package io.lb.meubeats.ui.main
+package io.lb.meubeats.user_feature.presentation.headset
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.lb.meubeats.R
-import io.lb.meubeats.model.headset.Headset
-import io.lb.meubeats.ui.headset.HeadsetViewModel
+import io.lb.meubeats.user_feature.domain.model.Headset
+import io.lb.meubeats.user_feature.presentation.headset_details.HeadsetViewModel
 import io.lb.meubeats.utils.DoubleHelper
 
-class MainHeadsetAdapter : RecyclerView.Adapter<MainHeadsetAdapter.ViewHolder>() {
+class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
     private var headsets = arrayListOf<Headset>()
     private var headsetsFull = arrayListOf<Headset>()
     lateinit var viewModel: HeadsetViewModel

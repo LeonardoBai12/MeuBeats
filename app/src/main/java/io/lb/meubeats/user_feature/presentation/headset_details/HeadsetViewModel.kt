@@ -1,12 +1,12 @@
-package io.lb.meubeats.ui.headset
+package io.lb.meubeats.user_feature.presentation.headset_details
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
-import io.lb.meubeats.model.headset.Headset
-import io.lb.meubeats.network.headset.HeadsetRepository
+import io.lb.meubeats.user_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 import io.lb.meubeats.utils.ResourceCreator
 import javax.inject.Inject
 

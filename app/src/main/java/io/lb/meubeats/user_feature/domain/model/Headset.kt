@@ -1,4 +1,4 @@
-package io.lb.meubeats.model.headset
+package io.lb.meubeats.user_feature.domain.model
 
 import java.io.Serializable
 

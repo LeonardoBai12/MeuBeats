@@ -1,4 +1,4 @@
-package io.lb.meubeats.network.headset
+package io.lb.meubeats.headset_feature.domain.repository
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -7,7 +7,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-import io.lb.meubeats.model.headset.Headset
+import io.lb.meubeats.user_feature.domain.model.Headset
 
 class HeadsetRepository(
     private val database: FirebaseDatabase,

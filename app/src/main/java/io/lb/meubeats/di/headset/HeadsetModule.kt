@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
-import io.lb.meubeats.network.headset.HeadsetRepository
+import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 
 @Module
 class HeadsetModule {
