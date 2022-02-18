@@ -14,6 +14,7 @@ import io.lb.meubeats.databinding.ActivityLoginBinding
 import io.lb.meubeats.headset_feature.presentation.headset.HeadsetActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -25,6 +26,7 @@ import javax.inject.Inject
 
 class LoginActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    val disposable = CompositeDisposable()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -108,5 +110,10 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun toastMakeText(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposable.clear()
     }
 }

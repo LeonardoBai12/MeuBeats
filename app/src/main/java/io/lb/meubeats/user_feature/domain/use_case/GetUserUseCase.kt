@@ -8,13 +8,25 @@ class GetUserUseCase(
     private val repository: UserRepository,
 ) {
     @Throws(InvalidUserException::class)
-    operator fun invoke(email: String?, password: String?) {
+    operator fun invoke(
+        email: String?,
+        password: String?,
+        onComplete: (FirebaseUser?) -> Unit
+    ) {
         if (email.isNullOrBlank()) {
-            throw InvalidUserException("Please, type an email")
+            throw InvalidUserException("por favor, digite seu usuário")
         }
         if (password.isNullOrBlank()) {
-            throw InvalidUserException("Please, type a password")
+            throw InvalidUserException("Por favor, digite sua senha")
         }
-        repository.getUser(email, password)
+
+        repository.getUser(email, password) { user ->
+            if (user == null) {
+                //TODO erro nessa exception
+                //throw InvalidUserException("Usuário e/ou senha incorretos!")
+            } else {
+                onComplete(user)
+            }
+        }
     }
 }
