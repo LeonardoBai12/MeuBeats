@@ -10,8 +10,11 @@ import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityHeadsetDetailsBinding
 import io.lb.meubeats.headset_feature.domain.model.Headset
-import io.lb.meubeats.headset_feature.presentation.headset.HeadsetViewModel
 import io.lb.meubeats.utils.GeneralConstants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HeadsetDetailsActivity : DaggerAppCompatActivity() {
@@ -22,7 +25,7 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: HeadsetViewModel by viewModels {
+    private val viewModel: HeadsetDetailsViewModel by viewModels {
         viewModelFactory
     }
 
@@ -34,17 +37,26 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
 
         setupViewModel()
         setupActionBar()
+        setupUiEvents()
         setupViews()
         setupBuyButton()
     }
 
+    private fun setupUiEvents() {
+        CoroutineScope(Dispatchers.Main).launch {
+            viewModel.eventFlow.collectLatest { event ->
+                when (event) {
+                    is HeadsetDetailsViewModel.UiEvent.ShowToast -> {
+                        toastMakeText(event.message)
+                    }
+                }
+            }
+        }
+    }
+
     private fun setupBuyButton() {
         binding.btBuy.setOnClickListener {
-            if (headset == null) {
-                return@setOnClickListener
-            }
-
-
+            viewModel.onEvent(HeadsetDetailsEvent.PressedAdd(id, headset))
         }
     }
 
@@ -67,9 +79,9 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-//        viewModel.loadHeadsetsFromFirebaseListener { headsets ->
-//            id = headsets.size
-//        }
+        viewModel.getHeadsetsFromFirebase { headsets ->
+            id = headsets.size
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -79,7 +91,6 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
-
 
     private fun setupActionBar() {
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back_arrow)
