@@ -1,6 +1,6 @@
 package io.lb.meubeats.utils
 
-import io.lb.meubeats.model.headset.Headset
+import io.lb.meubeats.headset_feature.domain.model.Headset
 
 object ResourceCreator {
     fun exampleHeadsets(): ArrayList<Headset> {
