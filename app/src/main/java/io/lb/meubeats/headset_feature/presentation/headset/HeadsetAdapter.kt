@@ -37,8 +37,7 @@ class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
         }
 
         holder.itemView.setOnClickListener {
-            viewModel.selectedHeadset.value = headsets[position]
-            viewModel.selectedPosition = position
+            viewModel.onEvent(HeadsetEvent.OnHeadsetSelected(position, headsets[position]))
             notifyDataSetChanged()
         }
     }

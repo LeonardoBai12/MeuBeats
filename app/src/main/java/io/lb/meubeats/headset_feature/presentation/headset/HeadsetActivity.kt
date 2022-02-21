@@ -19,6 +19,10 @@ import io.lb.meubeats.databinding.ActivityMainBinding
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsActivity
 import io.lb.meubeats.utils.GeneralConstants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HeadsetActivity : DaggerAppCompatActivity() {
@@ -41,9 +45,28 @@ class HeadsetActivity : DaggerAppCompatActivity() {
 
         setupRecyclerView()
         setupActionBar()
+        setupUiEvents()
         setupDetailsButtonListener()
         setupAddButtonListener()
         setupViewModel()
+    }
+
+    private fun setupUiEvents() {
+        CoroutineScope(Dispatchers.Main).launch {
+            viewModel.eventFlow.collectLatest { event ->
+                when (event) {
+                    is HeadsetViewModel.UiEvent.ShowToast -> {
+                        toastMakeText(event.message)
+                    }
+                    is HeadsetViewModel.UiEvent.OnHeadsetSelected -> {
+                        onHeadsetSelected()
+                    }
+                    is HeadsetViewModel.UiEvent.OnHeadsetDetailsClicked -> {
+                        onHeadsetDetailsClicked(event.headset)
+                    }
+                }
+            }
+        }
     }
 
     private fun setupViewModel() {
@@ -54,43 +77,39 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         viewModel.getHeadsetsFromFirebase { headsets ->
             id = headsets.size
         }
-
-        viewModel.selectedHeadset.observe(this) {
-            binding.included.btHeadsetDetails.isEnabled = true
-            binding.included.btAddHeadset.apply {
-                text = getString(R.string.add)
-                isEnabled = true
-            }
-        }
     }
 
     private fun setupAddButtonListener() {
         binding.included.btAddHeadset.setOnClickListener {
-            val headset = viewModel.selectedHeadset.value ?: return@setOnClickListener
-
-            viewModel.insertHeadset(id, headset) {
-
-            }
+            viewModel.onEvent(HeadsetEvent.PressedAdd(id))
         }
     }
 
-    private fun toaskHeadsetAddSuccess() {
-        Toast.makeText(
-            this,
-            "Produto adicionado com sucesso!",
-            Toast.LENGTH_LONG
-        ).show()
+    private fun toastMakeText(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     private fun setupDetailsButtonListener() {
         binding.included.btHeadsetDetails.setOnClickListener {
-            val i = Intent(this, HeadsetDetailsActivity::class.java)
-            val bundle = Bundle()
+            viewModel.onEvent(HeadsetEvent.OnHeadsetDetailsClicked)
+        }
+    }
 
-            bundle.putSerializable(GeneralConstants.HEADSET, viewModel.selectedHeadset.value)
-            i.putExtras(bundle)
+    private fun onHeadsetDetailsClicked(headset: Headset) {
+        val i = Intent(this, HeadsetDetailsActivity::class.java)
+        val bundle = Bundle()
 
-            startActivity(i)
+        bundle.putSerializable(GeneralConstants.HEADSET, headset)
+        i.putExtras(bundle)
+
+        startActivity(i)
+    }
+
+    private fun onHeadsetSelected() {
+        binding.included.btHeadsetDetails.isEnabled = true
+        binding.included.btAddHeadset.apply {
+            text = getString(R.string.add)
+            isEnabled = true
         }
     }
 
@@ -112,7 +131,6 @@ class HeadsetActivity : DaggerAppCompatActivity() {
 
     private fun setupRecyclerView() {
         val context = this
-
         startShimmer()
 
         binding.rvHeadsets.apply {

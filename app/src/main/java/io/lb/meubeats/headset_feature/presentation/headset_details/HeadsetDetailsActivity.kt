@@ -44,14 +44,7 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.insertHeadset(id, headset!!) {
-//                if (isSuccessful) {
-//                    finish()
-//                } else {
-//                    Timber.e(exception)
-//                    toastMakeText("Falha ao salvar produto. $exception")
-//                }
-            }
+
         }
     }
 
