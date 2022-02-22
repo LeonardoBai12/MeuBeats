@@ -26,7 +26,7 @@ class UserModule {
     fun providesUserUseCases(repository: UserRepository): UserUseCases {
         return UserUseCases(
             getUserUseCase = GetUserUseCase(repository),
-            createUserUseCase = CreateUserUseCase(repository),
+            createUserUseCase = CreateUserUseCase(repository)
         )
     }
 }

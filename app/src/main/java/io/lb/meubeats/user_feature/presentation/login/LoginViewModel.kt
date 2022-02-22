@@ -1,15 +1,9 @@
 package io.lb.meubeats.user_feature.presentation.login
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseUser
-import io.lb.meubeats.user_feature.data.repository.UserRepositoryImpl
 import io.lb.meubeats.user_feature.domain.use_case.UserUseCases
 import io.lb.meubeats.user_feature.domain.util.InvalidUserException
-import io.reactivex.rxjava3.core.Observable
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -26,6 +20,7 @@ class LoginViewModel @Inject constructor(
 
     sealed class UiEvent {
         data class ShowToast(val message: String): UiEvent()
+        object Login: UiEvent()
     }
 
     fun onEvent(event: LoginEvent) {
@@ -39,16 +34,27 @@ class LoginViewModel @Inject constructor(
                 }
                 is LoginEvent.PressedLogin -> {
                     try {
-                        useCases.getUserUseCase(typedEmail, typedPassword)
-                    } catch (e: InvalidUserException) {
-                        _eventFlow.emit(
-                            UiEvent.ShowToast(
-                                message = e.message ?: "Something went wrong!"
-                            )
-                        )
+                        useCases.getUserUseCase(typedEmail, typedPassword).addOnSuccessListener {
+                            emit(UiEvent.Login)
+                        }.addOnFailureListener {
+                            emit(exceptionToast(it))
+                        }
+                    } catch (e: Exception) {
+                        _eventFlow.emit(exceptionToast(e))
                     }
                 }
             }
+        }
+    }
+
+    private fun exceptionToast(e: Exception) =
+        UiEvent.ShowToast(
+            message = e.message ?: "Something went wrong!"
+        )
+
+    private fun emit(event: UiEvent) {
+        viewModelScope.launch {
+            _eventFlow.emit(event)
         }
     }
 }
