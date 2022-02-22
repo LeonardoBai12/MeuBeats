@@ -4,9 +4,9 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 
 object DoubleHelper {
-    fun formatCurrency(value: Double?): String {
+    fun Double?.formatCurrency(): String {
         val df = DecimalFormat("#.00")
         df.roundingMode = RoundingMode.CEILING
-        return "R$ ${df.format(value)}".replace(".",",")
+        return "R$ ${df.format(this ?: 0.0)}".replace(".",",")
     }
 }
