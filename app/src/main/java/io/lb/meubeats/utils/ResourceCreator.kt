@@ -15,7 +15,8 @@ object ResourceCreator {
             simpleHeadset(4),
         )
     }
-    private fun simpleHeadset(model: Int): Headset {
+
+    fun simpleHeadset(model: Int): Headset {
         return Headset(
             "Fone Modelo $model",
             soundCapture = "Semi ativa",

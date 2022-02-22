@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
 import io.lb.meubeats.user_feature.domain.util.InvalidUserException
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -46,7 +47,7 @@ class HeadsetViewModel @Inject constructor(
                         useCases.insertHeadsetToFirebaseUseCase(event.id, headset) {
                             emitToast("Produto adicionado com sucesso")
                         }
-                    } catch (e: InvalidUserException) {
+                    } catch (e: InvalidHeadsetException) {
                         emitToast(e.message ?: "Erro ao adicionar produto")
                     }
                 }

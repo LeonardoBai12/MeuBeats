@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import dagger.android.support.DaggerAppCompatActivity
 import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityLoginBinding
@@ -26,7 +27,6 @@ import javax.inject.Inject
 
 class LoginActivity : DaggerAppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    val disposable = CompositeDisposable()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -110,10 +110,5 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun toastMakeText(text: String) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        disposable.clear()
     }
 }
