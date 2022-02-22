@@ -9,10 +9,10 @@ class CreateUserUseCase(
     @Throws(InvalidUserException::class)
     operator fun invoke(email: String?, password: String?) {
         if (email.isNullOrBlank()) {
-            throw InvalidUserException("Please, type an email")
+            throw InvalidUserException("Por favor, digite seu usuário")
         }
         if (password.isNullOrBlank()) {
-            throw InvalidUserException("Please, type a password")
+            throw InvalidUserException("Por favor, digite sua senha")
         }
         repository.insertUser(email, password)
     }

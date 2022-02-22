@@ -14,7 +14,7 @@ class GetUserUseCase(
         onComplete: (FirebaseUser?) -> Unit
     ) {
         if (email.isNullOrBlank()) {
-            throw InvalidUserException("por favor, digite seu usuário")
+            throw InvalidUserException("Por favor, digite seu usuário")
         }
         if (password.isNullOrBlank()) {
             throw InvalidUserException("Por favor, digite sua senha")
