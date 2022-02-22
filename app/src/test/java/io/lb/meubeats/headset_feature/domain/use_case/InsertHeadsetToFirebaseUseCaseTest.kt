@@ -1,5 +1,6 @@
 package io.lb.meubeats.headset_feature.domain.use_case
 
+import com.google.android.gms.tasks.Task
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 import io.lb.meubeats.utils.ResourceCreator
@@ -18,13 +19,14 @@ class InsertHeadsetToFirebaseUseCaseTest {
         val headset = ResourceCreator.simpleHeadset(0)
 
         // GIVEN
-        every { repository.insertHeadseToFirebase(0, headset){} } returns Unit
+        val taskMock = mockk<Task<Void>>()
+        every { repository.insertHeadseToFirebase(0, headset) } returns taskMock
 
         // WHEN
-        val result = insertHeadset(0, headset){}
+        val result = insertHeadset(0, headset)
 
         // THEN
-        Assert.assertEquals(result, Unit)
+        Assert.assertEquals(result, taskMock)
     }
 
     @Test
@@ -32,7 +34,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
         val headset = ResourceCreator.simpleHeadset(0)
 
         val throws = Assert.assertThrows(InvalidHeadsetException::class.java) {
-            insertHeadset(null, headset){}
+            insertHeadset(null, headset)
         }
 
         Assert.assertEquals("Não foi possível adicionar o produto", throws.message)
@@ -41,7 +43,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
     @Test
     fun `insertHeadset without headset returns exception`() = runBlocking {
         val throws = Assert.assertThrows(InvalidHeadsetException::class.java) {
-            insertHeadset(0, null){}
+            insertHeadset(0, null)
         }
 
         Assert.assertEquals("Não foi possível adicionar o produto", throws.message)
