@@ -27,9 +27,10 @@ class HeadsetDetailsViewModel @Inject constructor(
                 is HeadsetDetailsEvent.PressedAdd -> {
                     val headset = event.headset ?: return@launch
                     try {
-                        useCases.insertHeadsetToFirebaseUseCase(event.id, headset) {
-                            emitToast("Produto adicionado com sucesso")
-                        }
+                        useCases.insertHeadsetToFirebaseUseCase(event.id, headset)
+                            .addOnSuccessListener{
+                                emitToast("Produto adicionado com sucesso")
+                            }
                     } catch (e: InvalidUserException) {
                         emitToast(e.message ?: "Erro ao adicionar produto")
                     }

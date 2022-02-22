@@ -121,8 +121,8 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         supportActionBar?.elevation = 0.0F
     }
 
-    private fun updateHeadsets(todos: ArrayList<Headset>) {
-        headsetAdapter.updateList(todos)
+    private fun updateHeadsets(headsets: ArrayList<Headset>) {
+        headsetAdapter.updateList(headsets)
 
         Handler(Looper.getMainLooper()).postDelayed({
             disableShimmer()
