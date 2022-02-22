@@ -12,7 +12,6 @@ import org.junit.Assert
 import org.junit.Test
 
 class InsertHeadsetToFirebaseUseCaseTest {
-    //InvalidHeadsetException("Não foi possível adicionar o produto")
     private val repository = mockk<HeadsetRepository>()
     private val insertHeadset = InsertHeadsetToFirebaseUseCase(repository)
 
