@@ -1,5 +1,7 @@
 package io.lb.meubeats.user_feature.domain.use_case
 
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import io.lb.meubeats.user_feature.domain.repository.UserRepository
 import io.lb.meubeats.user_feature.domain.util.InvalidUserException
 import io.mockk.every
@@ -18,13 +20,14 @@ class GetUserUseCaseTest {
         val password = "password!22"
 
         // GIVEN
-        every { repository.getUser(user, password) } returns Unit
+        val taskMock = mockk<Task<AuthResult>>()
+        every { repository.getUser(user, password) } returns taskMock
 
         // WHEN
         val result = getUser(user, password)
 
-        //THEN
-        Assert.assertEquals(result, Unit)
+        // THEN
+        Assert.assertEquals(result, taskMock)
     }
 
     @Test
