@@ -36,7 +36,7 @@ class GetUserUseCaseTest {
         val password = "password!22"
 
         val throws = Assert.assertThrows(InvalidUserException::class.java) {
-            repository.getUser(user, password){}
+            getUser(user, password){}
         }
 
         Assert.assertEquals("Por favor, digite seu usuário", throws.message)
@@ -48,7 +48,7 @@ class GetUserUseCaseTest {
         val password = ""
 
         val throws = Assert.assertThrows(InvalidUserException::class.java) {
-            repository.getUser(user, password){}
+            getUser(user, password){}
         }
 
         Assert.assertEquals("Por favor, digite sua senha", throws.message)
