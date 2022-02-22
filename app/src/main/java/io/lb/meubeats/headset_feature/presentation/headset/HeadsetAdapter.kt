@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.lb.meubeats.R
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.utils.DoubleHelper
+import io.lb.meubeats.utils.DoubleHelper.formatCurrency
 
 class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
     private var headsets = arrayListOf<Headset>()
@@ -104,7 +105,7 @@ class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
             tvHeadsetName.text = headset.name
             tvHeadsetScore.text = headset.averageScore.toString()
             tvHeadsetReviews.text = headset.reviews.toString().plus(" reviews")
-            tvHeadsetPrice.text = DoubleHelper.formatCurrency(headset.price)
+            tvHeadsetPrice.text = headset.price.formatCurrency()
         }
     }
 }
