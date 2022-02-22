@@ -30,7 +30,7 @@ class CreateUserUseCaseTest {
     }
 
     @Test
-    fun `createUser without user returns failure`() = runBlocking {
+    fun `createUser without user returns exception`() = runBlocking {
         val user = ""
         val password = "password!22"
 
@@ -42,7 +42,7 @@ class CreateUserUseCaseTest {
     }
 
     @Test
-    fun `createUser without password returns failure`() = runBlocking {
+    fun `createUser without password returns exception`() = runBlocking {
         val user = "user@example.com"
         val password = ""
 

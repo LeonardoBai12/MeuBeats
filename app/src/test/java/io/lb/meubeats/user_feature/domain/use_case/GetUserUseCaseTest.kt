@@ -31,7 +31,7 @@ class GetUserUseCaseTest {
     }
 
     @Test
-    fun `getUser without user returns failure`() = runBlocking {
+    fun `getUser without user returns exception`() = runBlocking {
         val user = ""
         val password = "password!22"
 
@@ -43,7 +43,7 @@ class GetUserUseCaseTest {
     }
 
     @Test
-    fun `getUser without password returns failure`() = runBlocking {
+    fun `getUser without password returns exception`() = runBlocking {
         val user = "user@example.com"
         val password = ""
 
