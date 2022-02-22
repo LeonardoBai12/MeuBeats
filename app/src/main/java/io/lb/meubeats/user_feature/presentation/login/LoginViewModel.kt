@@ -26,7 +26,6 @@ class LoginViewModel @Inject constructor(
 
     sealed class UiEvent {
         data class ShowToast(val message: String): UiEvent()
-        object Login: UiEvent()
     }
 
     fun onEvent(event: LoginEvent) {
@@ -40,9 +39,7 @@ class LoginViewModel @Inject constructor(
                 }
                 is LoginEvent.PressedLogin -> {
                     try {
-                        useCases.getUserUseCase(typedEmail, typedPassword) {
-                            emitLogin()
-                        }
+                        useCases.getUserUseCase(typedEmail, typedPassword)
                     } catch (e: InvalidUserException) {
                         _eventFlow.emit(
                             UiEvent.ShowToast(
@@ -54,11 +51,4 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
-    private fun emitLogin() {
-        viewModelScope.launch {
-            _eventFlow.emit(UiEvent.Login)
-        }
-    }
-
 }

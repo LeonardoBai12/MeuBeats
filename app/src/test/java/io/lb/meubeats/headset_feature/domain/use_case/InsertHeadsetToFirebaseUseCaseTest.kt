@@ -2,8 +2,6 @@ package io.lb.meubeats.headset_feature.domain.use_case
 
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
-import io.lb.meubeats.user_feature.domain.use_case.CreateUserUseCase
-import io.lb.meubeats.user_feature.domain.util.InvalidUserException
 import io.lb.meubeats.utils.ResourceCreator
 import io.mockk.every
 import io.mockk.mockk
@@ -48,6 +46,4 @@ class InsertHeadsetToFirebaseUseCaseTest {
 
         Assert.assertEquals("Não foi possível adicionar o produto", throws.message)
     }
-
-
 }

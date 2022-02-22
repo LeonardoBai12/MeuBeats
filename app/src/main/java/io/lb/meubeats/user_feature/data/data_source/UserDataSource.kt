@@ -1,7 +1,8 @@
 package io.lb.meubeats.user_feature.data.data_source
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
 
 class UserDataSource(
     private val auth: FirebaseAuth,
@@ -10,16 +11,17 @@ class UserDataSource(
         auth.createUserWithEmailAndPassword(email, password)
     }
 
-    fun loginFirebaseUser(
-        email: String,
-        password: String,
-        onComplete: (FirebaseUser?) -> Unit
-    ) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful)
-                onComplete(it.result.user)
-            else
-                onComplete(null)
+    fun loginFirebaseUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+    }
+
+    fun getFirebaseAuthState() = callbackFlow  {
+        val authStateListener = FirebaseAuth.AuthStateListener { auth ->
+            trySend(auth.currentUser == null)
+        }
+        auth.addAuthStateListener(authStateListener)
+        awaitClose {
+            auth.removeAuthStateListener(authStateListener)
         }
     }
 }
