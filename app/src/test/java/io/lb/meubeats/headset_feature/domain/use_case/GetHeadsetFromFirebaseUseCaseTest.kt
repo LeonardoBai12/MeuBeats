@@ -1,10 +1,7 @@
 package io.lb.meubeats.headset_feature.domain.use_case
 
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
-import io.lb.meubeats.utils.ResourceCreator
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -16,12 +13,12 @@ class GetHeadsetFromFirebaseUseCaseTest {
     private val getHeadsets = GetHeadsetsFromFirebaseUseCase(repository)
 
     @Test
-    fun `getHeadsetsFromFirebase returns success`() = runBlocking {
+    fun `getHeadsetsFromFirebase returns success`() {
         // GIVEN
-        val taskMock = mockk<(ArrayList<Headset>) -> Unit>()
-        every { repository.getHeadsetsFromFirebase(taskMock) } returns Unit
+        every { repository.getHeadsetsFromFirebase(any()) } returns Unit
 
         // WHEN
+        val taskMock = mockk<(ArrayList<Headset>) -> Unit>()
         val result = getHeadsets(taskMock)
 
         // THEN

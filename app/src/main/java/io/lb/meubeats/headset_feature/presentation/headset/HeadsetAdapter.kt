@@ -10,8 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.lb.meubeats.R
 import io.lb.meubeats.headset_feature.domain.model.Headset
-import io.lb.meubeats.utils.DoubleHelper
-import io.lb.meubeats.utils.DoubleHelper.formatCurrency
+import io.lb.meubeats.utils.formatCurrency
 
 class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
     private var headsets = arrayListOf<Headset>()

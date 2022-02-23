@@ -15,7 +15,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
     private val insertHeadset = InsertHeadsetToFirebaseUseCase(repository)
 
     @Test
-    fun `insertHeadset with id and headset returns success`() = runBlocking {
+    fun `insertHeadset with id and headset returns success`() {
         val headset = ResourceCreator.simpleHeadset(0)
 
         // GIVEN
@@ -30,7 +30,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
     }
 
     @Test
-    fun `insertHeadset without id returns exception`() = runBlocking {
+    fun `insertHeadset without id returns exception`() {
         val headset = ResourceCreator.simpleHeadset(0)
 
         val throws = Assert.assertThrows(InvalidHeadsetException::class.java) {
@@ -41,7 +41,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
     }
 
     @Test
-    fun `insertHeadset without headset returns exception`() = runBlocking {
+    fun `insertHeadset without headset returns exception`() {
         val throws = Assert.assertThrows(InvalidHeadsetException::class.java) {
             insertHeadset(0, null)
         }
