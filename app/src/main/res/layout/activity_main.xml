@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_gray"
     android:id="@+id/main"
-    tools:context=".user_feature.presentation.headset_details.HeadsetDetailsActivity">
+    tools:context=".headset_feature.presentation.headset.HeadsetActivity">
 
     <include layout="@layout/content_main"
         android:id="@+id/included"

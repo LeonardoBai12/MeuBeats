@@ -16,6 +16,17 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
+    fun testButtonBuy() {
+        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+
+        onView(withId(R.id.bt_buy)).check(matches(isDisplayed()))
+        onView(withId(R.id.bt_buy)).check(
+            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
+        )
+        onView(withId(R.id.bt_buy)).check(matches(withText(R.string.buy)))
+    }
+
+    @Test
     fun testConnectionLabelTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
 
@@ -31,11 +42,7 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testConnectionDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_connection)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_connection)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 
     @Test
@@ -44,9 +51,6 @@ class HeadsetDetailsActivityTest {
 
         onView(withId(R.id.lbl_headset_compatibility)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_compatibility)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
-        onView(withId(R.id.lbl_headset_compatibility)).check(
             matches(withText(R.string.compatibility))
         )
     }
@@ -54,11 +58,7 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testCompatibilityDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_compatibility)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_compatibility)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 
     @Test
@@ -67,9 +67,6 @@ class HeadsetDetailsActivityTest {
 
         onView(withId(R.id.lbl_headset_power_supply)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_power_supply)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
-        onView(withId(R.id.lbl_headset_power_supply)).check(
             matches(withText(R.string.power_supply))
         )
     }
@@ -77,11 +74,7 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testPowerSupplyDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_power_supply)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_power_supply)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 
     @Test
@@ -90,9 +83,6 @@ class HeadsetDetailsActivityTest {
 
         onView(withId(R.id.lbl_headset_autonomy)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_autonomy)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
-        onView(withId(R.id.lbl_headset_autonomy)).check(
             matches(withText(R.string.autonomy))
         )
     }
@@ -100,11 +90,7 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testAutonomyDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_autonomy)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_autonomy)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 
     @Test
@@ -113,9 +99,6 @@ class HeadsetDetailsActivityTest {
 
         onView(withId(R.id.lbl_headset_height)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_height)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
-        onView(withId(R.id.lbl_headset_height)).check(
             matches(withText(R.string.height))
         )
     }
@@ -123,11 +106,7 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testHeightDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_height)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_height)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 
     @Test
@@ -136,9 +115,6 @@ class HeadsetDetailsActivityTest {
 
         onView(withId(R.id.lbl_headset_caption)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_caption)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
-        onView(withId(R.id.lbl_headset_caption)).check(
             matches(withText(R.string.caption))
         )
     }
@@ -146,10 +122,6 @@ class HeadsetDetailsActivityTest {
     @Test
     fun testCaptionDataTextView() {
         ActivityScenario.launch(HeadsetDetailsActivity::class.java)
-
         onView(withId(R.id.tv_headset_sound_capture)).check(matches(isDisplayed()))
-        onView(withId(R.id.tv_headset_sound_capture)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
     }
 }
