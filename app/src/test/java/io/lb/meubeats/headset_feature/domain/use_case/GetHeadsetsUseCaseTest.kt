@@ -13,7 +13,7 @@ class GetHeadsetsUseCaseTest {
     private val getHeadsets = GetHeadsetsUseCase(repository)
 
     @Test
-    fun `getHeadsets should return predefined size`() = runBlocking {
+    fun `getHeadsets should return predefined size`() {
         // GIVEN
         every { repository.getHeadsets()} returns ResourceCreator.exampleHeadsets()
 
@@ -25,9 +25,9 @@ class GetHeadsetsUseCaseTest {
     }
 
     @Test
-    fun `getHeadsets should return empty`() = runBlocking {
+    fun `getHeadsets should return empty`() {
         // GIVEN
-        every { repository.getHeadsets()} returns arrayListOf()
+        every { repository.getHeadsets() } returns arrayListOf()
 
         // WHEN
         val result = getHeadsets()
