@@ -23,14 +23,14 @@
         android:layout_marginHorizontal="35dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/included"/>
+        app:layout_constraintTop_toBottomOf="@id/included"/>
 
     <include layout="@layout/content_headset_details"
         android:id="@+id/included_texts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bt_buy"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintBottom_toTopOf="@id/bt_buy"
+        app:layout_constraintTop_toBottomOf="@id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

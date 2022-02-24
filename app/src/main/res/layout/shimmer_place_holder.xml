@@ -25,7 +25,7 @@
         android:textSize="16sp"
         android:background="@color/shimmer_grey"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/included"/>
+        app:layout_constraintStart_toEndOf="@id/included"/>
 
     <ImageView
         android:id="@+id/iv_headset_score"
@@ -37,7 +37,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/included"
+        app:layout_constraintStart_toEndOf="@id/included"
         app:tint="@color/shimmer_grey" />
 
     <TextView
@@ -45,9 +45,9 @@
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:background="@color/shimmer_grey"
-        app:layout_constraintTop_toTopOf="@+id/iv_headset_score"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_headset_score"
-        app:layout_constraintStart_toEndOf="@+id/iv_headset_score"/>
+        app:layout_constraintTop_toTopOf="@id/iv_headset_score"
+        app:layout_constraintBottom_toBottomOf="@id/iv_headset_score"
+        app:layout_constraintStart_toEndOf="@id/iv_headset_score"/>
 
     <TextView
         android:id="@+id/tv_headset_reviews"
@@ -55,9 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:background="@color/shimmer_grey"
-        app:layout_constraintTop_toTopOf="@+id/tv_headset_score"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_headset_score"
-        app:layout_constraintStart_toEndOf="@+id/tv_headset_score"/>
+        app:layout_constraintTop_toTopOf="@id/tv_headset_score"
+        app:layout_constraintBottom_toBottomOf="@id/tv_headset_score"
+        app:layout_constraintStart_toEndOf="@id/tv_headset_score"/>
 
     <TextView
         android:id="@+id/tv_headset_price"

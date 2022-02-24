@@ -26,9 +26,9 @@
         android:text="@string/select_a_product"
         android:background="@drawable/background_button_normal"
         android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@+id/iv_headset"
-        app:layout_constraintStart_toStartOf="@+id/iv_headset"
-        app:layout_constraintEnd_toEndOf="@+id/iv_headset"
+        app:layout_constraintTop_toBottomOf="@id/iv_headset"
+        app:layout_constraintStart_toStartOf="@id/iv_headset"
+        app:layout_constraintEnd_toEndOf="@id/iv_headset"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -41,7 +41,7 @@
         android:text="@string/question_mark"
         android:background="@drawable/background_button_normal"
         android:enabled="false"
-        app:layout_constraintTop_toTopOf="@+id/bt_add_headset"
-        app:layout_constraintStart_toEndOf="@+id/bt_add_headset"/>
+        app:layout_constraintTop_toTopOf="@id/bt_add_headset"
+        app:layout_constraintStart_toEndOf="@id/bt_add_headset"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

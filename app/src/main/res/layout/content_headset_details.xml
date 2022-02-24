@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_connection"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_connection"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_connection"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_connection"/>
 
     <TextView
         android:id="@+id/lbl_headset_compatibility"
@@ -36,7 +36,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_headset_connection"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_connection"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -45,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_compatibility"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_compatibility"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_compatibility"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_compatibility"/>
 
     <TextView
         android:id="@+id/lbl_headset_power_supply"
@@ -58,7 +58,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_headset_compatibility"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_compatibility"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_power_supply"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_power_supply"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_power_supply"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_power_supply"/>
 
     <TextView
         android:id="@+id/lbl_headset_autonomy"
@@ -80,7 +80,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_headset_power_supply"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_power_supply"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -89,8 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_autonomy"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_autonomy"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_autonomy"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_autonomy"/>
 
     <TextView
         android:id="@+id/lbl_headset_height"
@@ -102,7 +102,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_headset_autonomy"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_autonomy"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -111,8 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_height"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_height"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_height"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_height"/>
 
     <TextView
         android:id="@+id/lbl_headset_caption"
@@ -124,7 +124,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="end"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_headset_height"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_height"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -133,8 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@+id/lbl_headset_caption"
-        app:layout_constraintStart_toEndOf="@+id/lbl_headset_caption"/>
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_caption"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_caption"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
