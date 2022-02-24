@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -18,6 +19,7 @@ import io.lb.meubeats.R
 import io.lb.meubeats.databinding.ActivityMainBinding
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsActivity
+import io.lb.meubeats.user_feature.presentation.login.LoginActivity
 import io.lb.meubeats.utils.GeneralConstants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -63,6 +65,9 @@ class HeadsetActivity : DaggerAppCompatActivity() {
                     }
                     is HeadsetViewModel.UiEvent.OnHeadsetDetailsClicked -> {
                         onHeadsetDetailsClicked(event.headset)
+                    }
+                    is HeadsetViewModel.UiEvent.OnLogoutSuccess -> {
+                        onLogoutSuccess()
                     }
                 }
             }
@@ -155,6 +160,24 @@ class HeadsetActivity : DaggerAppCompatActivity() {
             binding.shimmerHeadsets.visibility = View.GONE
             binding.shimmerHeadsets.stopShimmer()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> onClickLogout()
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun onLogoutSuccess() {
+        val i = Intent(this, LoginActivity::class.java)
+        startActivity(i)
+        finish()
+    }
+
+    private fun onClickLogout(): Boolean {
+        viewModel.onEvent(HeadsetEvent.PressedLogout)
+        return false
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

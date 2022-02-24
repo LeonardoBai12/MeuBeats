@@ -17,6 +17,10 @@ class HeadsetRepositoryImpl(
         return dataSource.getHeadsets()
     }
 
+    override fun logout() {
+        dataSource.logout()
+    }
+
     override fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {
         dataSource.getHeadsetsFromFirebase(onDataChanged)
     }
