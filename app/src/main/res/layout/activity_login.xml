@@ -9,7 +9,7 @@
     tools:context=".user_feature.presentation.login.LoginActivity">
 
     <include layout="@layout/content_login"
-        android:id="@+id/included"
+        android:id="@id/included"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
