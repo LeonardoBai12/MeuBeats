@@ -9,14 +9,14 @@ import org.junit.Test
 
 class LoginActivityTest {
     @Test
-    fun isActivityInView() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_activity_in_view() {
+        start()
         onView(withId(R.id.login)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testTitleTextView() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_title_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(
@@ -25,8 +25,8 @@ class LoginActivityTest {
     }
 
     @Test
-    fun testSpecialityTextView() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_speciality_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.tv_speciality)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_speciality)).check(
@@ -35,8 +35,8 @@ class LoginActivityTest {
     }
 
     @Test
-    fun testEmailTextInputLayout() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_user_text_input_layout_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.til_login_email)).check(matches(isDisplayed()))
         onView(withId(R.id.til_login_email)).check(
@@ -45,8 +45,8 @@ class LoginActivityTest {
     }
 
     @Test
-    fun testPasswordTextInputLayout() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_password_text_input_layout_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.til_login_password)).check(matches(isDisplayed()))
         onView(withId(R.id.til_login_password)).check(
@@ -55,12 +55,16 @@ class LoginActivityTest {
     }
 
     @Test
-    fun testLoginButton() {
-        ActivityScenario.launch(LoginActivity::class.java)
+    fun is_login_button_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.bt_login)).check(matches(isDisplayed()))
         onView(withId(R.id.bt_login)).check(
             matches(withText(R.string.login))
         )
+    }
+
+    private fun start() {
+        ActivityScenario.launch(LoginActivity::class.java)
     }
 }
