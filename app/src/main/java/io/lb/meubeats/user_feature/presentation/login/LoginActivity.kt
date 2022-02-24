@@ -66,7 +66,7 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun setupOnEmailEntered() {
         Observable.create<String> { emitter ->
-            binding.included.tvLoginEmail.editText?.addTextChangedListener {
+            binding.included.tilLoginEmail.editText?.addTextChangedListener {
                 if (!emitter.isDisposed) {
                     emitter.onNext(it.toString())
                 }
@@ -80,7 +80,7 @@ class LoginActivity : DaggerAppCompatActivity() {
 
     private fun setupOnPasswordEntered() {
         Observable.create<String> { emitter ->
-            binding.included.tvLoginPassword.editText?.addTextChangedListener {
+            binding.included.tilLoginPassword.editText?.addTextChangedListener {
                 if (!emitter.isDisposed) {
                     emitter.onNext(it.toString())
                 }

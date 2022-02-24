@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login"
+    android:id="@+id/login"
     tools:context=".headset_feature.presentation.login.LoginActivity">
 
     <include layout="@layout/content_login"
