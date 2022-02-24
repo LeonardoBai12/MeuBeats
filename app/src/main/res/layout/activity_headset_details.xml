@@ -9,7 +9,7 @@
     tools:context=".headset_feature.presentation.headset_details.HeadsetDetailsActivity">
 
     <include layout="@layout/content_headset_picture"
-        android:id="@id/included"
+        android:id="@+id/included"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
