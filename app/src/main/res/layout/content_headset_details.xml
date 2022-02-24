@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/lbl_headset_connection"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:text="@string/connection"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_connection"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_connection"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_connection"/>
+
+    <TextView
+        android:id="@+id/lbl_headset_compatibility"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/compatibility"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_connection"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_compatibility"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_compatibility"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_compatibility"/>
+
+    <TextView
+        android:id="@+id/lbl_headset_power_supply"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/power_supply"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_compatibility"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_power_supply"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_power_supply"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_power_supply"/>
+
+    <TextView
+        android:id="@+id/lbl_headset_autonomy"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/autonomy"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_power_supply"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_autonomy"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_autonomy"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_autonomy"/>
+
+    <TextView
+        android:id="@+id/lbl_headset_height"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/height"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_autonomy"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_height"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_height"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_height"/>
+
+    <TextView
+        android:id="@+id/lbl_headset_caption"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/caption"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="end"
+        app:layout_constraintTop_toBottomOf="@id/lbl_headset_height"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_headset_sound_capture"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/lbl_headset_caption"
+        app:layout_constraintStart_toEndOf="@id/lbl_headset_caption"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
