@@ -10,44 +10,38 @@ import org.junit.Test
 
 class HeadsetDetailsActivityTest {
     @Test
-    fun isActivityInView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_activity_in_view() {
+        start()
         onView(withId(R.id.headset_details)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testButtonBuy() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_button_buy_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.bt_buy)).check(matches(isDisplayed()))
-        onView(withId(R.id.bt_buy)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
         onView(withId(R.id.bt_buy)).check(matches(withText(R.string.buy)))
     }
 
     @Test
-    fun testConnectionLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_connection_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_connection)).check(matches(isDisplayed()))
-        onView(withId(R.id.lbl_headset_connection)).check(
-            matches(withEffectiveVisibility(Visibility.forViewVisibility(View.VISIBLE)))
-        )
         onView(withId(R.id.lbl_headset_connection)).check(
             matches(withText(R.string.connection))
         )
     }
 
     @Test
-    fun testConnectionDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_connection_text_view_displayed() {
+        start()
         onView(withId(R.id.tv_headset_connection)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testCompatibilityLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_compatibility_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_compatibility)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_compatibility)).check(
@@ -56,14 +50,14 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
-    fun testCompatibilityDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_compatibility_text_view_displayed() {
+        start()
         onView(withId(R.id.tv_headset_compatibility)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testPowerSupplyLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_power_supply_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_power_supply)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_power_supply)).check(
@@ -72,14 +66,14 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
-    fun testPowerSupplyDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_power_supply_text_view_displayed() {
+        start()
         onView(withId(R.id.tv_headset_power_supply)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testAutonomyLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_autonomy_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_autonomy)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_autonomy)).check(
@@ -88,14 +82,14 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
-    fun testAutonomyDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_autonomy_text_view_displayed() {
+        start()
         onView(withId(R.id.tv_headset_autonomy)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testHeightLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_height_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_height)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_height)).check(
@@ -104,14 +98,14 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
-    fun testHeightDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_height_text_view_displayed() {
+        start()
         onView(withId(R.id.tv_headset_height)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testCaptionLabelTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_caption_label_text_view_displayed_and_with_the_correct_text() {
+        start()
 
         onView(withId(R.id.lbl_headset_caption)).check(matches(isDisplayed()))
         onView(withId(R.id.lbl_headset_caption)).check(
@@ -120,8 +114,12 @@ class HeadsetDetailsActivityTest {
     }
 
     @Test
-    fun testCaptionDataTextView() {
-        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
+    fun is_caption_text_view() {
+        start()
         onView(withId(R.id.tv_headset_sound_capture)).check(matches(isDisplayed()))
+    }
+
+    private fun start() {
+        ActivityScenario.launch(HeadsetDetailsActivity::class.java)
     }
 }
