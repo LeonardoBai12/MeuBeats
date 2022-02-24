@@ -16,13 +16,13 @@ class HeadsetActivityTest {
     }
 
     @Test
-    fun testHeadsetsRecyclerView() {
+    fun is_headsets_recycler_view_not_displayed() {
         start()
         onView(withId(R.id.rv_headsets)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun testButtonAdd() {
+    fun is_button_add_displayed_and_with_the_correct_text() {
         start()
 
         onView(withId(R.id.bt_add_headset)).check(matches(isDisplayed()))
