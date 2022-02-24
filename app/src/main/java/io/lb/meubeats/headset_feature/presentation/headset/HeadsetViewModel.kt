@@ -26,6 +26,7 @@ class HeadsetViewModel @Inject constructor(
         data class ShowToast(val message: String): UiEvent()
         object OnHeadsetSelected: UiEvent()
         data class OnHeadsetDetailsClicked(val headset: Headset): UiEvent()
+        object OnLogoutSuccess: UiEvent()
     }
 
     fun onEvent(event: HeadsetEvent) {
@@ -40,6 +41,10 @@ class HeadsetViewModel @Inject constructor(
                 is HeadsetEvent.OnHeadsetDetailsClicked -> {
                     val headset = selectedHeadset.value ?: return@launch
                     _eventFlow.emit(UiEvent.OnHeadsetDetailsClicked(headset))
+                }
+                is HeadsetEvent.PressedLogout -> {
+                    useCases.logoutUseCase()
+                    _eventFlow.emit(UiEvent.OnLogoutSuccess)
                 }
                 is HeadsetEvent.PressedAdd -> {
                     val headset = selectedHeadset.value ?: return@launch

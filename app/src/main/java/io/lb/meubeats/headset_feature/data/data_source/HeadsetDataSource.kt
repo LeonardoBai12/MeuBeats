@@ -26,6 +26,10 @@ class HeadsetDataSource(
         return ResourceCreator.exampleHeadsets()
     }
 
+    fun logout() {
+        auth.signOut()
+    }
+
     fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit): ValueEventListener {
         return database.getReference("headset").addValueEventListener(
             object : ValueEventListener {

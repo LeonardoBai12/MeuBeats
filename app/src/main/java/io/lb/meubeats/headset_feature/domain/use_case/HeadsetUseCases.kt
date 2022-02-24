@@ -4,4 +4,5 @@ data class HeadsetUseCases(
     val getHeadsetsUseCase: GetHeadsetsUseCase,
     val getHeadsetsFromFirebaseUseCase: GetHeadsetsFromFirebaseUseCase,
     val insertHeadsetToFirebaseUseCase: InsertHeadsetToFirebaseUseCase,
+    val logoutUseCase: LogoutUseCase,
 )

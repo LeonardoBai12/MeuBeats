@@ -11,6 +11,7 @@ import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromFirebaseUse
 import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsUseCase
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
 import io.lb.meubeats.headset_feature.domain.use_case.InsertHeadsetToFirebaseUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.LogoutUseCase
 
 @Module
 class HeadsetModule {
@@ -35,6 +36,7 @@ class HeadsetModule {
             getHeadsetsUseCase = GetHeadsetsUseCase(repository),
             insertHeadsetToFirebaseUseCase = InsertHeadsetToFirebaseUseCase(repository),
             getHeadsetsFromFirebaseUseCase = GetHeadsetsFromFirebaseUseCase(repository),
+            logoutUseCase = LogoutUseCase(repository),
         )
     }
 }
