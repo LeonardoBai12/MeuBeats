@@ -7,7 +7,11 @@ import dagger.Provides
 import io.lb.meubeats.headset_feature.data.repository.HeadsetRepositoryImpl
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetDataSource
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
-import io.lb.meubeats.headset_feature.domain.use_case.*
+import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromFirebaseUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
+import io.lb.meubeats.headset_feature.domain.use_case.InsertHeadsetToFirebaseUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.LogoutUseCase
 
 @Module
 class HeadsetModule {
