@@ -1,19 +1,26 @@
 package io.lb.meubeats
 
+import android.app.Activity
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.anything
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import org.hamcrest.CoreMatchers.*
 import org.hamcrest.Matchers
+import org.junit.Rule
 
-open class BaseTestRobot {
+open class BaseTestRobot(private val activity: Class<out Activity>) {
+
+    @Rule
+    var activityRule = ActivityScenarioRule(activity)
+
     fun isViewDisplayed(resId: Int) {
         viewInteraction(resId).check(matches(isDisplayed()))
     }
@@ -47,5 +54,17 @@ open class BaseTestRobot {
         onData(anything())
             .inAdapterView(allOf(withId(listRes)))
             .atPosition(position).perform(ViewActions.click())
+    }
+
+    fun isToastTextCorrect(textId: Int) {
+        activityRule.scenario.onActivity {
+            viewInteraction(textId)
+                .inRoot(withDecorView(not(it.window.decorView)))
+                .check(matches(isDisplayed()))
+        }
+    }
+
+    fun start() {
+        ActivityScenario.launch(activity)
     }
 }
