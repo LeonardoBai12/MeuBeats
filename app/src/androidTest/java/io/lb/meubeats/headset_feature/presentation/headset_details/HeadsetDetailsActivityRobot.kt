@@ -1,12 +1,11 @@
 package io.lb.meubeats.headset_feature.presentation.headset_details
 
 import androidx.test.core.app.ActivityScenario
+import io.lb.meubeats.BaseTestRobot
 import io.lb.meubeats.R
-import io.lb.meubeats.isViewDisplayed
-import io.lb.meubeats.isViewTextCorrect
 import org.junit.Test
 
-class HeadsetDetailsActivityTest {
+class HeadsetDetailsActivityRobot: BaseTestRobot() {
     @Test
     fun is_activity_in_view() {
         start()

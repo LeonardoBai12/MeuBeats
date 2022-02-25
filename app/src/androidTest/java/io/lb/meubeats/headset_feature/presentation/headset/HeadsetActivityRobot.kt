@@ -4,7 +4,7 @@ import androidx.test.core.app.ActivityScenario
 import io.lb.meubeats.*
 import org.junit.Test
 
-class HeadsetActivityTest {
+class HeadsetActivityRobot: BaseTestRobot() {
     @Test
     fun is_activity_in_view() {
         start()

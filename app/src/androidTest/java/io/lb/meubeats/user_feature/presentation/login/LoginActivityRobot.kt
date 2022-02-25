@@ -4,13 +4,11 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import io.lb.meubeats.BaseTestRobot
 import io.lb.meubeats.R
-import io.lb.meubeats.isTextInputLayoutHintCorrect
-import io.lb.meubeats.isViewDisplayed
-import io.lb.meubeats.isViewTextCorrect
 import org.junit.Test
 
-class LoginActivityTest {
+class LoginActivityRobot: BaseTestRobot() {
     @Test
     fun is_activity_in_view() {
         start()
