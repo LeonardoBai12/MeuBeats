@@ -1,15 +1,43 @@
 package io.lb.meubeats.user_feature.presentation.login
 
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import io.lb.meubeats.R
+import io.lb.meubeats.ToastMatcher
+import org.junit.Rule
 import org.junit.Test
 
 class LoginActivityTest {
     private val robot = LoginActivityRobot()
 
+    @get:Rule
+    var activityRule = ActivityScenarioRule(LoginActivity::class.java)
+
     @Test
     fun is_activity_in_view() {
         robot.login {
             isViewDisplayed(R.id.login)
+        }
+    }
+
+    @Test
+    fun is_login_without_email_toast_with_correct_text() {
+        robot.login {
+            setEmail()
+            setPassword("wrong")
+            clickLoginButton()
+            isToastTextCorrect("Por favor, digite seu usuário")
+        }
+    }
+
+    @Test
+    fun is_login_without_password_toast_with_correct_text() {
+        robot.login {
+            setEmail("mail@example.com")
+            setPassword()
+            clickLoginButton()
+            isToastTextCorrect("Por favor, digite sua senha")
         }
     }
 
@@ -55,4 +83,14 @@ class LoginActivityTest {
         }
     }
 
+    private fun isToastTextCorrect(text: String) {
+        robot.login {
+            activityRule.scenario.onActivity {
+                viewInteraction(text)
+                    .inRoot(ToastMatcher()).apply {
+                        matches(ViewMatchers.isDisplayed())
+                    }
+            }
+        }
+    }
 }

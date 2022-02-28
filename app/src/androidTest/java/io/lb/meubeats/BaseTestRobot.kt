@@ -8,19 +8,11 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions
 
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.RootMatchers.withDecorView
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.Matchers
-import org.junit.Rule
 
 open class BaseTestRobot(private val activity: Class<out Activity>) {
-
-    @Rule
-    var activityRule = ActivityScenarioRule(activity)
-
     fun isViewDisplayed(resId: Int) {
         viewInteraction(resId).check(matches(isDisplayed()))
     }
@@ -31,16 +23,16 @@ open class BaseTestRobot(private val activity: Class<out Activity>) {
 
     fun isTextInputLayoutHintCorrect(resId: Int, textId: Int) {
         viewInteraction(resId).check(
-            matches(ViewMatchers.hasDescendant(ViewMatchers.withHint(textId)))
+            matches(hasDescendant(withHint(textId)))
         )
     }
 
     fun isViewTextCorrect(resId: Int, textId: Int) {
-        viewInteraction(resId).check(matches(ViewMatchers.withText(textId)))
+        viewInteraction(resId).check(matches(withText(textId)))
     }
 
     fun fillEditText(resId: Int, text: String): ViewInteraction =
-        viewInteraction(resId).perform(
+        viewWithParent(resId).perform(
             ViewActions.replaceText(text),
             ViewActions.closeSoftKeyboard()
         )
@@ -48,20 +40,16 @@ open class BaseTestRobot(private val activity: Class<out Activity>) {
     fun clickButton(resId: Int): ViewInteraction =
         viewInteraction(resId).perform(ViewActions.click())
 
+    fun viewWithParent(resId: Int): ViewInteraction =
+        onView(allOf(supportsInputMethods(), isDescendantOfA(withId(resId))))
+
     fun viewInteraction(resId: Int): ViewInteraction = onView(withId(resId))
+    fun viewInteraction(text: String): ViewInteraction = onView(withText(text))
 
     fun clickListItem(listRes: Int, position: Int) {
         onData(anything())
             .inAdapterView(allOf(withId(listRes)))
             .atPosition(position).perform(ViewActions.click())
-    }
-
-    fun isToastTextCorrect(textId: Int) {
-        activityRule.scenario.onActivity {
-            viewInteraction(textId)
-                .inRoot(withDecorView(not(it.window.decorView)))
-                .check(matches(isDisplayed()))
-        }
     }
 
     fun start() {
