@@ -10,7 +10,7 @@ import com.google.firebase.database.ktx.getValue
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.utils.ResourceCreator
 
-class HeadsetDataSource(
+class HeadsetFirebaseDataSource(
     private val database: FirebaseDatabase,
     private val auth: FirebaseAuth,
 ) {
