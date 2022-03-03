@@ -11,7 +11,7 @@ import io.lb.meubeats.headset_feature.data.data_source.HeadsetFirebaseDataSource
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetServiceInterface
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromFirebaseUseCase
-import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromDatabaseUseCase
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
 import io.lb.meubeats.headset_feature.domain.use_case.InsertHeadsetToFirebaseUseCase
 import io.lb.meubeats.headset_feature.domain.use_case.LogoutUseCase
@@ -48,7 +48,7 @@ class HeadsetModule {
     @Provides
     fun providesHeadsetUseCases(repository: HeadsetRepository): HeadsetUseCases {
         return HeadsetUseCases(
-            getHeadsetsUseCase = GetHeadsetsUseCase(repository),
+            getHeadsetsUseCase = GetHeadsetsFromDatabaseUseCase(repository),
             insertHeadsetToFirebaseUseCase = InsertHeadsetToFirebaseUseCase(repository),
             getHeadsetsFromFirebaseUseCase = GetHeadsetsFromFirebaseUseCase(repository),
             logoutUseCase = LogoutUseCase(repository),
