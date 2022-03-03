@@ -1,13 +1,11 @@
 package io.lb.meubeats.headset_feature.di
 
-import android.app.Application
-import androidx.room.Room
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetDao
-import io.lb.meubeats.headset_feature.data.data_source.HeadsetDatabase
+import io.lb.meubeats.db.AppDatabase
 import io.lb.meubeats.headset_feature.data.repository.HeadsetRepositoryImpl
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetFirebaseDataSource
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetServiceInterface
@@ -27,16 +25,7 @@ class HeadsetModule {
     }
 
     @Provides
-    fun provideHeadsetDatabase(app: Application): HeadsetDatabase {
-        return Room.databaseBuilder(
-            app,
-            HeadsetDatabase::class.java,
-            HeadsetDatabase.DATABASE_NAME
-        ).build()
-    }
-
-    @Provides
-    fun getHeadsetDao(appDataBase: HeadsetDatabase): HeadsetDao {
+    fun getHeadsetDao(appDataBase: AppDatabase): HeadsetDao {
         return appDataBase.headsetDao
     }
 
