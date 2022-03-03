@@ -14,24 +14,24 @@ class GetHeadsetsUseCaseTest {
     @Test
     fun `getHeadsets should return predefined size`() {
         // GIVEN
-        every { repository.getHeadsetsFromDatabase()} returns ResourceCreator.exampleHeadsets()
+        every { repository.getHeadsetsFromDatabase().value} returns ResourceCreator.exampleHeadsets()
 
         // WHEN
-        val result = getHeadsets()
+        val result = getHeadsets().value
 
         // THEN
-        Assert.assertEquals(result.size, 8)
+        Assert.assertEquals(result?.size, 8)
     }
 
     @Test
     fun `getHeadsets should return empty`() {
         // GIVEN
-        every { repository.getHeadsetsFromDatabase() } returns arrayListOf()
+        every { repository.getHeadsetsFromDatabase().value } returns arrayListOf()
 
         // WHEN
-        val result = getHeadsets()
+        val result = getHeadsets().value
 
         // THEN
-        Assert.assertEquals(result.size, 0)
+        Assert.assertEquals(result?.size, 0)
     }
 }
