@@ -8,4 +8,12 @@ class HeadsetActivityRobot: BaseTestRobot(HeadsetActivity::class.java) {
             start()
             func()
         }
+
+    fun selectHeadset() {
+        clickListItem(R.id.rv_headsets, 0)
+    }
+
+    fun clickAddButton() {
+        clickButton(R.id.bt_add_headset)
+    }
 }

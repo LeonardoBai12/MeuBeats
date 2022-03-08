@@ -1,7 +1,8 @@
 package io.lb.meubeats.user_feature.presentation.login
 
+import android.os.SystemClock
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import io.lb.meubeats.R
 import io.lb.meubeats.ToastMatcher
@@ -87,9 +88,9 @@ class LoginActivityTest {
         robot.login {
             activityRule.scenario.onActivity {
                 viewInteraction(text)
-                    .inRoot(ToastMatcher()).apply {
-                        matches(ViewMatchers.isDisplayed())
-                    }
+                    .inRoot(ToastMatcher()).check(
+                        matches(isDisplayed())
+                    )
             }
         }
     }
