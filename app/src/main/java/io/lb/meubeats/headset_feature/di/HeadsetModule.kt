@@ -40,9 +40,10 @@ class HeadsetModule {
     @Provides
     fun providesHeadsetRepository(
         dataSource: HeadsetFirebaseDataSource,
-        dao: HeadsetDao
+        dao: HeadsetDao,
+        serviceInterface: HeadsetServiceInterface
     ): HeadsetRepository {
-        return HeadsetRepositoryImpl(dataSource, dao)
+        return HeadsetRepositoryImpl(dataSource, dao, serviceInterface)
     }
 
     @Provides
