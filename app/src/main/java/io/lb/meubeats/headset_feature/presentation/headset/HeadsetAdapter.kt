@@ -13,8 +13,8 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.utils.formatCurrency
 
 class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
-    private var headsets = arrayListOf<Headset>()
-    private var headsetsFull = arrayListOf<Headset>()
+    private var headsets = emptyList<Headset>()
+    private var headsetsFull = emptyList<Headset>()
     lateinit var viewModel: HeadsetViewModel
 
     override fun onCreateViewHolder(
@@ -52,7 +52,7 @@ class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
         return headsets.size
     }
 
-    fun updateList(headsets: ArrayList<Headset>) {
+    fun updateList(headsets: List<Headset>) {
         this.headsets = headsets
         this.headsetsFull = headsets
         notifyDataSetChanged()
@@ -88,7 +88,7 @@ class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
             }
 
             override fun publishResults(constraint: CharSequence, results: FilterResults) {
-                headsets = results.values as ArrayList<Headset>
+                headsets = results.values as List<Headset>
                 notifyDataSetChanged()
             }
         }

@@ -4,7 +4,6 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
 
