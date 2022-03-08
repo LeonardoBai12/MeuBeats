@@ -1,12 +1,13 @@
 package io.lb.meubeats.headset_feature.presentation.headset
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
-import io.lb.meubeats.user_feature.domain.util.InvalidUserException
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -15,7 +16,6 @@ import javax.inject.Inject
 class HeadsetViewModel @Inject constructor(
     private val useCases: HeadsetUseCases
 ): ViewModel() {
-    private var headsets = MutableLiveData<ArrayList<Headset>>()
     var selectedHeadset = MutableLiveData<Headset?>()
     var selectedPosition: Int? = null
 
@@ -67,9 +67,8 @@ class HeadsetViewModel @Inject constructor(
         }
     }
 
-    fun getHeadsets(): MutableLiveData<ArrayList<Headset>> {
-        headsets.value = useCases.getHeadsetsUseCase()
-        return headsets
+    fun getHeadsets(): LiveData<List<Headset>> {
+        return useCases.getHeadsetsUseCase()
     }
 
     fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {

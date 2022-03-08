@@ -126,7 +126,7 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         supportActionBar?.elevation = 0.0F
     }
 
-    private fun updateHeadsets(headsets: ArrayList<Headset>) {
+    private fun updateHeadsets(headsets: List<Headset>) {
         headsetAdapter.updateList(headsets)
 
         Handler(Looper.getMainLooper()).postDelayed({
