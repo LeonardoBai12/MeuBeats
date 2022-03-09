@@ -57,6 +57,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
 
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
     def rx_android_version = "3.0.0"
     implementation "io.reactivex.rxjava3:rxandroid:$rx_android_version"
     def rx_java_version = "3.1.3"

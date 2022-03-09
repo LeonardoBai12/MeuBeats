@@ -11,6 +11,7 @@ import dagger.Module
 import dagger.Provides
 import io.lb.meubeats.db.AppDatabase
 import io.lb.meubeats.utils.GeneralConstants
+import io.lb.meubeats.utils.okHttp
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -22,6 +23,7 @@ class AppModule {
     fun getRetrofitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(GeneralConstants.BASE_URL)
+            .client(okHttp.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
