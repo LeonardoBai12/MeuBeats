@@ -6,7 +6,7 @@ import java.io.Serializable
 
 @Entity
 data class Headset(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int? = 0,
     val name: String = "",
     var soundCapture: String? = null,
