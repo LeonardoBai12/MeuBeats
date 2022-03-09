@@ -5,7 +5,6 @@ import com.google.firebase.auth.AuthResult
 import io.lb.meubeats.user_feature.domain.repository.UserRepository
 import io.lb.meubeats.user_feature.domain.util.InvalidUserException
 import io.mockk.every
-import io.mockk.impl.annotations.SpyK
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
