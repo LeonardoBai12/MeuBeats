@@ -9,7 +9,7 @@ import org.junit.Test
 
 class GetHeadsetsUseCaseTest {
     private val repository = mockk<HeadsetRepository>()
-    private val getHeadsets = GetHeadsetsFromDatabaseUseCase(repository)
+    private val getHeadsets = GetHeadsetsUseCase(repository)
 
     @Test
     fun `getHeadsets should return predefined size`() {

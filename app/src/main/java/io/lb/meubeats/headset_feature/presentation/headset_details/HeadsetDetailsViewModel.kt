@@ -46,7 +46,7 @@ class HeadsetDetailsViewModel @Inject constructor(
     }
 
     fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {
-        useCases.getHeadsetsFromFirebaseUseCase(onDataChanged)
+        useCases.getBoughtHeadsetsUseCase(onDataChanged)
     }
 
 }

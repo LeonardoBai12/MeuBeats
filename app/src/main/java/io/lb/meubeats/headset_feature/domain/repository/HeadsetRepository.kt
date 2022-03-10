@@ -6,7 +6,7 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 
 interface HeadsetRepository {
     fun insertHeadseToFirebase(id: Int, headset: Headset): Task<Void>
-    fun getHeadsetsFromDatabase(): LiveData<List<Headset>>
+    suspend fun getHeadsetsFromDatabase(): LiveData<List<Headset>>
     fun logout()
     fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit)
 }

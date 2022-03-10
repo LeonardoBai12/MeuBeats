@@ -1,6 +1,5 @@
 package io.lb.meubeats.headset_feature.data.data_source
 
-import androidx.lifecycle.LiveData
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -14,7 +13,7 @@ class HeadsetFirebaseDataSource(
     private val database: FirebaseDatabase,
     private val auth: FirebaseAuth,
 ) {
-    fun insertHeadseToFirebase(id: Int, headset: Headset): Task<Void> {
+    fun insertHeadsetToFirebase(id: Int, headset: Headset): Task<Void> {
         return database.reference
             .child("headset")
             .child(auth.currentUser!!.uid)

@@ -4,7 +4,7 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 
-class GetHeadsetsFromFirebaseUseCase(
+class GetBoughtHeadsetsUseCase(
     private val repository: HeadsetRepository
 ) {
     @Throws(InvalidHeadsetException::class)

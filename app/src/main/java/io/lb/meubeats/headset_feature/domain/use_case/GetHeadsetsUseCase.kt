@@ -5,11 +5,11 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
 
-class GetHeadsetsFromDatabaseUseCase(
+class GetHeadsetsUseCase(
     private val repository: HeadsetRepository
 ) {
     @Throws(InvalidHeadsetException::class)
-    operator fun invoke(): LiveData<List<Headset>> {
+    suspend operator fun invoke(): LiveData<List<Headset>> {
         return repository.getHeadsetsFromDatabase()
     }
 }
