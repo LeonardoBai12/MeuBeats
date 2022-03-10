@@ -10,6 +10,6 @@ class GetHeadsetsUseCase(
 ) {
     @Throws(InvalidHeadsetException::class)
     suspend operator fun invoke(): LiveData<List<Headset>> {
-        return repository.getHeadsetsFromDatabase()
+        return repository.getHeadsets()
     }
 }

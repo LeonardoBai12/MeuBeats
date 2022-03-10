@@ -8,7 +8,7 @@ class GetBoughtHeadsetsUseCase(
     private val repository: HeadsetRepository
 ) {
     @Throws(InvalidHeadsetException::class)
-    operator fun invoke(onDataChanged: (ArrayList<Headset>) -> Unit) {
-        repository.getHeadsetsFromFirebase(onDataChanged)
+    suspend operator fun invoke(): List<Headset> {
+        return repository.getBoughtHeadsetsUseCase()
     }
 }

@@ -81,9 +81,8 @@ class HeadsetActivity : DaggerAppCompatActivity() {
             viewModel.getHeadsets().observe(context) {
                 updateHeadsets(it)
             }
-
-            viewModel.getHeadsetsFromFirebase { headsets ->
-                id = headsets.size
+            viewModel.getBoughtHeadsets().observe(context) {
+                id = it.size
             }
         }
     }

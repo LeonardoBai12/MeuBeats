@@ -50,7 +50,7 @@ class HeadsetModule {
     fun providesHeadsetUseCases(repository: HeadsetRepository): HeadsetUseCases {
         return HeadsetUseCases(
             getHeadsetsUseCase = GetHeadsetsUseCase(repository),
-            insertHeadsetToFirebaseUseCase = InsertHeadsetToFirebaseUseCase(repository),
+            insertHeadsetUseCase = InsertHeadsetToFirebaseUseCase(repository),
             getBoughtHeadsetsUseCase = GetBoughtHeadsetsUseCase(repository),
             logoutUseCase = LogoutUseCase(repository),
         )

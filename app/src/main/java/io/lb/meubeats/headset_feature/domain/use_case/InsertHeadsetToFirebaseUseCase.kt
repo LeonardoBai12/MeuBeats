@@ -14,6 +14,6 @@ class InsertHeadsetToFirebaseUseCase(
         if (id == null || headset == null) {
             throw InvalidHeadsetException("Não foi possível adicionar o produto")
         }
-        return repository.insertHeadseToFirebase(id, headset)
+        return repository.insertHeadset(id, headset)
     }
 }

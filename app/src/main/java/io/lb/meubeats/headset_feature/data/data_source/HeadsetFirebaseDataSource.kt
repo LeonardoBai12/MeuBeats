@@ -8,35 +8,46 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import io.lb.meubeats.headset_feature.domain.model.Headset
+import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class HeadsetFirebaseDataSource(
     private val database: FirebaseDatabase,
     private val auth: FirebaseAuth,
 ) {
-    fun insertHeadsetToFirebase(id: Int, headset: Headset): Task<Void> {
-        return database.reference
-            .child("headset")
-            .child(auth.currentUser!!.uid)
-            .child(id.toString())
-            .setValue(headset)
+    fun insertHeadset(id: Int, headset: Headset): Task<Void> {
+        return auth.currentUser?.let {
+            database.reference
+                .child("headset")
+                .child(auth.currentUser!!.uid)
+                .child(id.toString())
+                .setValue(headset)
+        } ?: throw InvalidHeadsetException("Houve um erro ao comprar o produto!")
     }
 
     fun logout() {
         auth.signOut()
     }
 
-    fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit): ValueEventListener {
-        return database.getReference("headset").addValueEventListener(
+    suspend fun getBoughtHeadsetsUseCase() : List<Headset> = suspendCancellableCoroutine {
+        database.getReference("headset").addValueEventListener(
             object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val hashMap = snapshot.getValue<HashMap<String, ArrayList<Headset>>>()
-                    val headsets = hashMap?.get(auth.uid)
-                    onDataChanged(headsets ?: arrayListOf())
+                    val hashMap = snapshot.getValue<HashMap<String, List<Headset>>>()
+                    if (it.isActive) {
+                        it.resume(hashMap?.get(auth.uid) ?: listOf())
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                 }
             }
         )
+
     }
 }

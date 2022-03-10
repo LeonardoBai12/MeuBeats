@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
+import io.lb.meubeats.headset_feature.presentation.headset_details.HeadsetDetailsViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -18,7 +19,7 @@ class HeadsetViewModel @Inject constructor(
     var selectedHeadset = MutableLiveData<Headset?>()
     var selectedPosition: Int? = null
 
-    private val _eventFlow = MutableSharedFlow<HeadsetViewModel.UiEvent>()
+    private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
     sealed class UiEvent {
@@ -48,7 +49,7 @@ class HeadsetViewModel @Inject constructor(
                 is HeadsetEvent.PressedAdd -> {
                     val headset = selectedHeadset.value ?: return@launch
                     try {
-                        useCases.insertHeadsetToFirebaseUseCase(event.id, headset)
+                        useCases.insertHeadsetUseCase(event.id, headset)
                             .addOnSuccessListener {
                                 emitToast("Produto adicionado com sucesso")
                             }
@@ -70,7 +71,9 @@ class HeadsetViewModel @Inject constructor(
         return useCases.getHeadsetsUseCase()
     }
 
-    fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {
-        useCases.getBoughtHeadsetsUseCase(onDataChanged)
+    suspend fun getBoughtHeadsets(): MutableLiveData<List<Headset>> {
+        val headsets = MutableLiveData<List<Headset>>()
+        headsets.value = useCases.getBoughtHeadsetsUseCase()
+        return headsets
     }
 }

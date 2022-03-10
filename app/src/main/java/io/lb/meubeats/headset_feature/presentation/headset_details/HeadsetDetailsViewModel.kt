@@ -1,5 +1,6 @@
 package io.lb.meubeats.headset_feature.presentation.headset_details
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
@@ -27,7 +28,7 @@ class HeadsetDetailsViewModel @Inject constructor(
                 is HeadsetDetailsEvent.PressedAdd -> {
                     val headset = event.headset ?: return@launch
                     try {
-                        useCases.insertHeadsetToFirebaseUseCase(event.id, headset)
+                        useCases.insertHeadsetUseCase(event.id, headset)
                             .addOnSuccessListener{
                                 emitToast("Produto adicionado com sucesso")
                             }
@@ -45,8 +46,9 @@ class HeadsetDetailsViewModel @Inject constructor(
         }
     }
 
-    fun getHeadsetsFromFirebase(onDataChanged: (ArrayList<Headset>) -> Unit) {
-        useCases.getBoughtHeadsetsUseCase(onDataChanged)
+    suspend fun getBoughtHeadsets(): MutableLiveData<List<Headset>> {
+        val headsets = MutableLiveData<List<Headset>>()
+        headsets.value = useCases.getBoughtHeadsetsUseCase()
+        return headsets
     }
-
 }
