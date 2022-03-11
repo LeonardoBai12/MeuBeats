@@ -16,6 +16,8 @@ import javax.inject.Inject
 class HeadsetViewModel @Inject constructor(
     private val useCases: HeadsetUseCases
 ): ViewModel() {
+
+    private val headsets = MutableLiveData<List<Headset>>()
     var selectedHeadset = MutableLiveData<Headset?>()
     var selectedPosition: Int? = null
 
@@ -51,13 +53,20 @@ class HeadsetViewModel @Inject constructor(
                     try {
                         useCases.insertHeadsetUseCase(event.id, headset)
                             .addOnSuccessListener {
-                                emitToast("Produto adicionado com sucesso")
+                                emitSuccessToast()
                             }
                     } catch (e: InvalidHeadsetException) {
                         emitToast(e.message ?: "Erro ao adicionar produto")
                     }
                 }
             }
+        }
+    }
+
+    private fun emitSuccessToast() {
+        viewModelScope.launch {
+            getBoughtHeadsets()
+            _eventFlow.emit(UiEvent.ShowToast("Produto adicionado com sucesso"))
         }
     }
 
@@ -72,7 +81,6 @@ class HeadsetViewModel @Inject constructor(
     }
 
     suspend fun getBoughtHeadsets(): MutableLiveData<List<Headset>> {
-        val headsets = MutableLiveData<List<Headset>>()
         headsets.value = useCases.getBoughtHeadsetsUseCase()
         return headsets
     }

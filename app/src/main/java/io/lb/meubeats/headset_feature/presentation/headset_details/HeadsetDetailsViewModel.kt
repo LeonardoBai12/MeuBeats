@@ -15,6 +15,7 @@ class HeadsetDetailsViewModel @Inject constructor(
     private val useCases: HeadsetUseCases
 ): ViewModel() {
 
+    private val headsets = MutableLiveData<List<Headset>>()
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
@@ -30,13 +31,20 @@ class HeadsetDetailsViewModel @Inject constructor(
                     try {
                         useCases.insertHeadsetUseCase(event.id, headset)
                             .addOnSuccessListener{
-                                emitToast("Produto adicionado com sucesso")
+                                emitSuccessToast()
                             }
                     } catch (e: InvalidUserException) {
                         emitToast(e.message ?: "Erro ao adicionar produto")
                     }
                 }
             }
+        }
+    }
+
+    private fun emitSuccessToast() {
+        viewModelScope.launch {
+            getBoughtHeadsets()
+            _eventFlow.emit(UiEvent.ShowToast("Produto adicionado com sucesso"))
         }
     }
 
@@ -47,7 +55,6 @@ class HeadsetDetailsViewModel @Inject constructor(
     }
 
     suspend fun getBoughtHeadsets(): MutableLiveData<List<Headset>> {
-        val headsets = MutableLiveData<List<Headset>>()
         headsets.value = useCases.getBoughtHeadsetsUseCase()
         return headsets
     }
