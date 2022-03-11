@@ -7,15 +7,8 @@ import io.lb.meubeats.headset_feature.data.data_source.HeadsetFirebaseDataSource
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetService
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import timber.log.Timber
 
 class HeadsetRepositoryImpl(
     private val dataSource: HeadsetFirebaseDataSource,
