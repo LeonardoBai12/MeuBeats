@@ -20,7 +20,7 @@ class HeadsetFirebaseDataSource(
         return auth.currentUser?.let {
             database.reference
                 .child("headset")
-                .child(auth.currentUser!!.uid)
+                .child(it.uid)
                 .child(id.toString())
                 .setValue(headset)
         } ?: throw InvalidHeadsetException("Houve um erro ao comprar o produto!")
