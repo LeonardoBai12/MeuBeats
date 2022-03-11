@@ -75,13 +75,11 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val context = this
-
         CoroutineScope(Dispatchers.Main).launch {
-            viewModel.getHeadsets().observe(context) {
+            viewModel.getHeadsets().observe(this@HeadsetActivity) {
                 updateHeadsets(it)
             }
-            viewModel.getBoughtHeadsets().observe(context) {
+            viewModel.getBoughtHeadsets().observe(this@HeadsetActivity) {
                 id = it.size
             }
         }
@@ -138,11 +136,10 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val context = this
         startShimmer()
 
         binding.rvHeadsets.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(this@HeadsetActivity)
             adapter = headsetAdapter
         }
     }

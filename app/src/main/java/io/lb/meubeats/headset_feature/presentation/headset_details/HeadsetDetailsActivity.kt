@@ -79,10 +79,8 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        val context = this
-
         CoroutineScope(Dispatchers.Main).launch {
-            viewModel.getBoughtHeadsets().observe(context) {
+            viewModel.getBoughtHeadsets().observe(this@HeadsetDetailsActivity) {
                 id = it.size
             }
         }
