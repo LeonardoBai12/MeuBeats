@@ -14,7 +14,7 @@ abstract class HeadsetViewModel(
 ): ViewModel() {
     val headsets = MutableLiveData<List<Headset>>()
     val boughtHeadsets = MutableLiveData<List<Headset>>()
-    
+
     fun getHeadsets() {
         CoroutineScope(Dispatchers.IO).launch {
             headsets.postValue(useCases.getHeadsetsUseCase())
