@@ -10,7 +10,7 @@ import io.lb.meubeats.headset_feature.domain.model.Headset
 @Dao
 interface HeadsetDao {
     @Query("SELECT * FROM headset")
-    fun getAllRecords(): LiveData<List<Headset>>
+    fun getAllRecords(): List<Headset>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRecord(headset: Headset)

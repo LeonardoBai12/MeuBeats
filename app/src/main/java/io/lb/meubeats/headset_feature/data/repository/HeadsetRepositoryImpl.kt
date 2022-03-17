@@ -19,7 +19,7 @@ class HeadsetRepositoryImpl(
         return dataSource.insertHeadset(id, headset)
     }
 
-    override suspend fun getHeadsets(): LiveData<List<Headset>> {
+    override suspend fun getHeadsets(): List<Headset> {
         makeApiCall()
         return dao.getAllRecords()
     }

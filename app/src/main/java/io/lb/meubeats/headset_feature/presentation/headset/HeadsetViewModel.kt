@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -15,8 +17,8 @@ import javax.inject.Inject
 class HeadsetViewModel @Inject constructor(
     private val useCases: HeadsetUseCases
 ): ViewModel() {
-
-    private val headsets = MutableLiveData<List<Headset>>()
+    val headsets = MutableLiveData<List<Headset>>()
+    val boughtHeadsets = MutableLiveData<List<Headset>>()
     var selectedHeadset = MutableLiveData<Headset?>()
     var selectedPosition: Int? = null
 
@@ -52,7 +54,8 @@ class HeadsetViewModel @Inject constructor(
                     try {
                         useCases.insertHeadsetUseCase(event.id, headset)
                             .addOnSuccessListener {
-                                emitSuccessToast()
+                                getBoughtHeadsets()
+                                emitToast("Produto adicionado com sucesso")
                             }
                     } catch (e: InvalidHeadsetException) {
                         emitToast(e.message ?: "Erro ao adicionar produto")
@@ -62,25 +65,21 @@ class HeadsetViewModel @Inject constructor(
         }
     }
 
-    private fun emitSuccessToast() {
-        viewModelScope.launch {
-            getBoughtHeadsets()
-            _eventFlow.emit(UiEvent.ShowToast("Produto adicionado com sucesso"))
-        }
-    }
-
     private fun emitToast(message: String) {
         viewModelScope.launch {
             _eventFlow.emit(UiEvent.ShowToast(message))
         }
     }
 
-    suspend fun getHeadsets(): LiveData<List<Headset>> {
-        return useCases.getHeadsetsUseCase()
+    fun getHeadsets() {
+        CoroutineScope(Dispatchers.IO).launch {
+            headsets.postValue(useCases.getHeadsetsUseCase())
+        }
     }
 
-    suspend fun getBoughtHeadsets(): MutableLiveData<List<Headset>> {
-        headsets.value = useCases.getBoughtHeadsetsUseCase()
-        return headsets
+    fun getBoughtHeadsets() {
+        viewModelScope.launch {
+            boughtHeadsets.postValue(useCases.getBoughtHeadsetsUseCase())
+        }
     }
 }

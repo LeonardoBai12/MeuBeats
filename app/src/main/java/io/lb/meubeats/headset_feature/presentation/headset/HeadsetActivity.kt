@@ -51,6 +51,7 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         setupDetailsButtonListener()
         setupAddButtonListener()
         setupViewModel()
+        setupHeadsets()
     }
 
     private fun setupUiEvents() {
@@ -75,14 +76,17 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        CoroutineScope(Dispatchers.Main).launch {
-            viewModel.getHeadsets().observe(this@HeadsetActivity) {
-                updateHeadsets(it)
-            }
-            viewModel.getBoughtHeadsets().observe(this@HeadsetActivity) {
-                id = it.size
-            }
+        viewModel.headsets.observe(this) {
+            updateHeadsets(it)
         }
+        viewModel.boughtHeadsets.observe(this) {
+            id = it.size
+        }
+    }
+
+    private fun setupHeadsets() {
+        viewModel.getHeadsets()
+        viewModel.getBoughtHeadsets()
     }
 
     private fun setupAddButtonListener() {
