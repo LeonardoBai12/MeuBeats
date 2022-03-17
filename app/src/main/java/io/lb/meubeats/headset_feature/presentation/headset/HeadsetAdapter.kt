@@ -15,7 +15,7 @@ import io.lb.meubeats.utils.formatCurrency
 class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
     private var headsets = emptyList<Headset>()
     private var headsetsFull = emptyList<Headset>()
-    lateinit var viewModel: HeadsetViewModel
+    lateinit var viewModel: HeadsetListViewModel
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,7 +23,7 @@ class HeadsetAdapter : RecyclerView.Adapter<HeadsetAdapter.ViewHolder>() {
     ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.row_headset, parent, false)
-        viewModel = ViewModelProvider(parent.context as AppCompatActivity)[HeadsetViewModel::class.java]
+        viewModel = ViewModelProvider(parent.context as AppCompatActivity)[HeadsetListViewModel::class.java]
         return ViewHolder(view)
     }
 

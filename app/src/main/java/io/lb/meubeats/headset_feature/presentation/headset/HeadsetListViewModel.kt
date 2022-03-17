@@ -1,24 +1,19 @@
 package io.lb.meubeats.headset_feature.presentation.headset
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.lb.meubeats.headset_feature.domain.model.Headset
 import io.lb.meubeats.headset_feature.domain.model.InvalidHeadsetException
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import io.lb.meubeats.headset_feature.presentation.HeadsetViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HeadsetViewModel @Inject constructor(
+class HeadsetListViewModel @Inject constructor(
     private val useCases: HeadsetUseCases
-): ViewModel() {
-    val headsets = MutableLiveData<List<Headset>>()
-    val boughtHeadsets = MutableLiveData<List<Headset>>()
+): HeadsetViewModel(useCases) {
     var selectedHeadset = MutableLiveData<Headset?>()
     var selectedPosition: Int? = null
 
@@ -68,18 +63,6 @@ class HeadsetViewModel @Inject constructor(
     private fun emitToast(message: String) {
         viewModelScope.launch {
             _eventFlow.emit(UiEvent.ShowToast(message))
-        }
-    }
-
-    fun getHeadsets() {
-        CoroutineScope(Dispatchers.IO).launch {
-            headsets.postValue(useCases.getHeadsetsUseCase())
-        }
-    }
-
-    fun getBoughtHeadsets() {
-        viewModelScope.launch {
-            boughtHeadsets.postValue(useCases.getBoughtHeadsetsUseCase())
         }
     }
 }

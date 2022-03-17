@@ -35,7 +35,7 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: HeadsetViewModel by viewModels {
+    private val viewModel: HeadsetListViewModel by viewModels {
         viewModelFactory
     }
 
@@ -58,16 +58,16 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             viewModel.eventFlow.collectLatest { event ->
                 when (event) {
-                    is HeadsetViewModel.UiEvent.ShowToast -> {
+                    is HeadsetListViewModel.UiEvent.ShowToast -> {
                         toastMakeText(event.message)
                     }
-                    is HeadsetViewModel.UiEvent.OnHeadsetSelected -> {
+                    is HeadsetListViewModel.UiEvent.OnHeadsetSelected -> {
                         onHeadsetSelected()
                     }
-                    is HeadsetViewModel.UiEvent.OnHeadsetDetailsClicked -> {
+                    is HeadsetListViewModel.UiEvent.OnHeadsetDetailsClicked -> {
                         onHeadsetDetailsClicked(event.headset)
                     }
-                    is HeadsetViewModel.UiEvent.OnLogoutSuccess -> {
+                    is HeadsetListViewModel.UiEvent.OnLogoutSuccess -> {
                         onLogoutSuccess()
                     }
                 }

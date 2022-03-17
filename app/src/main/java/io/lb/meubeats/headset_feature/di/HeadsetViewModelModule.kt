@@ -5,12 +5,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import io.lb.meubeats.di.ViewModelKey
-import io.lb.meubeats.headset_feature.presentation.headset.HeadsetViewModel
+import io.lb.meubeats.headset_feature.presentation.headset.HeadsetListViewModel
 
 @Module
 abstract class HeadsetViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(HeadsetViewModel::class)
-    abstract fun bindHeadsetViewModel(viewModel: HeadsetViewModel) : ViewModel
+    @ViewModelKey(HeadsetListViewModel::class)
+    abstract fun bindHeadsetViewModel(viewModel: HeadsetListViewModel) : ViewModel
 }
