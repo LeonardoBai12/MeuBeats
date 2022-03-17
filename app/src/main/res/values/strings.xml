@@ -23,4 +23,6 @@
     <string name="login_error">Erro na autenticação</string>
     <string name="logout">Sair</string>
     <string name="search">Pesquisasr</string>
+    <string name="success_adding_product">Produto adicionado com sucesso</string>
+    <string name="error_adding_product">Erro ao adicionar produto</string>
 </resources>
