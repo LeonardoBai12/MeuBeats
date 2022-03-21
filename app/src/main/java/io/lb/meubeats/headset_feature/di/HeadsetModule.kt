@@ -8,10 +8,10 @@ import io.lb.meubeats.headset_feature.data.data_source.HeadsetDao
 import io.lb.meubeats.db.AppDatabase
 import io.lb.meubeats.headset_feature.data.repository.HeadsetRepositoryImpl
 import io.lb.meubeats.headset_feature.data.data_source.HeadsetFirebaseDataSource
-import io.lb.meubeats.headset_feature.data.data_source.HeadsetServiceInterface
+import io.lb.meubeats.headset_feature.data.data_source.HeadsetService
 import io.lb.meubeats.headset_feature.domain.repository.HeadsetRepository
-import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromFirebaseUseCase
-import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsFromDatabaseUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.GetBoughtHeadsetsUseCase
+import io.lb.meubeats.headset_feature.domain.use_case.GetHeadsetsUseCase
 import io.lb.meubeats.headset_feature.domain.use_case.HeadsetUseCases
 import io.lb.meubeats.headset_feature.domain.use_case.InsertHeadsetToFirebaseUseCase
 import io.lb.meubeats.headset_feature.domain.use_case.LogoutUseCase
@@ -20,8 +20,8 @@ import retrofit2.Retrofit
 @Module
 class HeadsetModule {
     @Provides
-    fun getHeadsetServiceInterface(retrofit: Retrofit): HeadsetServiceInterface {
-        return retrofit.create(HeadsetServiceInterface::class.java)
+    fun getHeadsetService(retrofit: Retrofit): HeadsetService {
+        return retrofit.create(HeadsetService::class.java)
     }
 
     @Provides
@@ -40,18 +40,18 @@ class HeadsetModule {
     @Provides
     fun providesHeadsetRepository(
         dataSource: HeadsetFirebaseDataSource,
+        service: HeadsetService,
         dao: HeadsetDao,
-        serviceInterface: HeadsetServiceInterface
     ): HeadsetRepository {
-        return HeadsetRepositoryImpl(dataSource, dao, serviceInterface)
+        return HeadsetRepositoryImpl(dataSource, service, dao)
     }
 
     @Provides
     fun providesHeadsetUseCases(repository: HeadsetRepository): HeadsetUseCases {
         return HeadsetUseCases(
-            getHeadsetsUseCase = GetHeadsetsFromDatabaseUseCase(repository),
-            insertHeadsetToFirebaseUseCase = InsertHeadsetToFirebaseUseCase(repository),
-            getHeadsetsFromFirebaseUseCase = GetHeadsetsFromFirebaseUseCase(repository),
+            getHeadsetsUseCase = GetHeadsetsUseCase(repository),
+            insertHeadsetUseCase = InsertHeadsetToFirebaseUseCase(repository),
+            getBoughtHeadsetsUseCase = GetBoughtHeadsetsUseCase(repository),
             logoutUseCase = LogoutUseCase(repository),
         )
     }
