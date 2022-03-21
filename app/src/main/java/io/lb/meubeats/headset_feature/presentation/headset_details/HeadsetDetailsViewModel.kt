@@ -24,6 +24,7 @@ class HeadsetDetailsViewModel @Inject constructor(
     fun onEvent(event: HeadsetDetailsEvent) {
         viewModelScope.launch {
             when (event) {
+             //   when (event) {
                 is HeadsetDetailsEvent.PressedAdd -> {
                     val headset = event.headset ?: return@launch
                     try {
