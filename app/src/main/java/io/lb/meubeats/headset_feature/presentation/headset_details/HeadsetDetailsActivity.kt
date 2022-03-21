@@ -40,6 +40,7 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
         setupUiEvents()
         setupViews()
         setupBuyButton()
+        setupHeadsets()
     }
 
     private fun setupUiEvents() {
@@ -79,9 +80,13 @@ class HeadsetDetailsActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.getHeadsetsFromFirebase { headsets ->
-            id = headsets.size
+        viewModel.boughtHeadsets.observe(this) {
+            id = it.size
         }
+    }
+
+    private fun setupHeadsets() {
+        viewModel.getBoughtHeadsets()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

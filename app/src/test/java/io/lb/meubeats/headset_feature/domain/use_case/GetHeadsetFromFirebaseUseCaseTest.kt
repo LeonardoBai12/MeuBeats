@@ -9,7 +9,7 @@ import org.junit.Test
 
 class GetHeadsetFromFirebaseUseCaseTest {
     private val repository = mockk<HeadsetRepository>()
-    private val getHeadsets = GetHeadsetsFromFirebaseUseCase(repository)
+    private val getHeadsets = GetBoughtHeadsetsUseCase(repository)
 
     @Test
     fun `getHeadsetsFromFirebase returns success`() {

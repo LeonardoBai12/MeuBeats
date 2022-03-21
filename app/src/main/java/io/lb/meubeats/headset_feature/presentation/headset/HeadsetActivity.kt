@@ -35,7 +35,7 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel: HeadsetViewModel by viewModels {
+    private val viewModel: HeadsetListViewModel by viewModels {
         viewModelFactory
     }
 
@@ -51,22 +51,23 @@ class HeadsetActivity : DaggerAppCompatActivity() {
         setupDetailsButtonListener()
         setupAddButtonListener()
         setupViewModel()
+        setupHeadsets()
     }
 
     private fun setupUiEvents() {
         CoroutineScope(Dispatchers.Main).launch {
             viewModel.eventFlow.collectLatest { event ->
                 when (event) {
-                    is HeadsetViewModel.UiEvent.ShowToast -> {
+                    is HeadsetListViewModel.UiEvent.ShowToast -> {
                         toastMakeText(event.message)
                     }
-                    is HeadsetViewModel.UiEvent.OnHeadsetSelected -> {
+                    is HeadsetListViewModel.UiEvent.OnHeadsetSelected -> {
                         onHeadsetSelected()
                     }
-                    is HeadsetViewModel.UiEvent.OnHeadsetDetailsClicked -> {
+                    is HeadsetListViewModel.UiEvent.OnHeadsetDetailsClicked -> {
                         onHeadsetDetailsClicked(event.headset)
                     }
-                    is HeadsetViewModel.UiEvent.OnLogoutSuccess -> {
+                    is HeadsetListViewModel.UiEvent.OnLogoutSuccess -> {
                         onLogoutSuccess()
                     }
                 }
@@ -75,13 +76,17 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel.getHeadsets().observe(this) {
+        viewModel.headsets.observe(this) {
             updateHeadsets(it)
         }
-
-        viewModel.getHeadsetsFromFirebase { headsets ->
-            id = headsets.size
+        viewModel.boughtHeadsets.observe(this) {
+            id = it.size
         }
+    }
+
+    private fun setupHeadsets() {
+        viewModel.getHeadsets()
+        viewModel.getBoughtHeadsets()
     }
 
     private fun setupAddButtonListener() {
@@ -135,11 +140,10 @@ class HeadsetActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        val context = this
         startShimmer()
 
         binding.rvHeadsets.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(this@HeadsetActivity)
             adapter = headsetAdapter
         }
     }
