@@ -23,6 +23,7 @@ class HeadsetDetailsViewModel @Inject constructor(
     }
 
     fun onEvent(event: HeadsetDetailsEvent) {
+        //viewModelScope.launch {
         viewModelScope.launch {
             when (event) {
                 is HeadsetDetailsEvent.PressedAdd -> {
