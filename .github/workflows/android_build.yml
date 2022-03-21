@@ -17,9 +17,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Decode google-services.json
-        env:
-        FIREBASE_SECRET: ${{ secrets.FIREBASE_SECRET }}
-        run: echo $FIREBASE_SECRET > MeuBeats/app/google-services.json
+        run: echo ${{ secrets.FIREBASE_SECRET }} > MeuBeats/app/google-services.json
 
       - name: Run Tests
         run: ./gradlew test
