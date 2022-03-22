@@ -20,7 +20,7 @@ class InsertHeadsetToFirebaseUseCaseTest {
 
         // GIVEN
         val taskMock = mockk<Task<Void>>()
-        every { repository.insertHeadseToFirebase(0, headset) } returns taskMock
+        every { repository.insertHeadset(0, headset) } returns taskMock
 
         // WHEN
         val result = insertHeadset(0, headset)

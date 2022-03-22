@@ -3,7 +3,7 @@ package io.lb.meubeats.utils
 import io.lb.meubeats.headset_feature.domain.model.Headset
 
 object ResourceCreator {
-    fun exampleHeadsets(): ArrayList<Headset> {
+    fun exampleHeadsets(): List<Headset> {
         return arrayListOf(
             simpleHeadset(1),
             simpleHeadset(3),
