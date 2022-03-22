@@ -34,6 +34,6 @@ class GetHeadsetsUseCaseTest {
         val result = runBlocking { getHeadsets() }
 
         // THEN
-        Assert.assertEquals(result.size, 0)
+        Assert.assertTrue(result.isEmpty())
     }
 }
